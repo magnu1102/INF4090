@@ -2,6 +2,10 @@
 data/processed/*.csv
 data/processed/*.parquet
 
+# Feature engineering output files (also large)
+data/features/*.csv
+data/features/*.parquet
+
 # Original Excel data files (also large)
 data/*.xlsx
 

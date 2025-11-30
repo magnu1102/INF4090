@@ -1,0 +1,30 @@
+================================================================================
+FEATURE STATISTICS REPORT
+================================================================================
+Generated: 2025-11-30
+
+Dataset: feature_dataset_v1.parquet
+Total rows: 280,840
+Total companies: 114,848
+Years: [2016, 2017, 2018]
+
+Features added: 37 (includes temporal, liquidity, leverage, profitability features)
+
+Note: This file was generated after successful feature engineering.
+      See feature_calculation_log.md for detailed formulas and theoretical basis.
+      The main dataset contains all original columns plus 37 derived features.
+
+Key Feature Categories:
+- Financial Ratios (11): Liquidity, leverage, profitability, coverage, Altman Z-Score
+- Temporal Features (10): Growth rates, trends, volatility
+- Missingness Features (7): Filing status, completeness indicators
+- Company Characteristics (4): Age, size
+- Warning Signals (5): Critical threshold violations
+
+All features successfully calculated and saved to:
+- feature_dataset_v1.parquet (105 MB)
+- feature_dataset_v1.csv (1.1 GB)
+
+For detailed statistics on each feature, load the parquet file and use:
+  df = pd.read_parquet('feature_dataset_v1.parquet')
+  df.describe()
