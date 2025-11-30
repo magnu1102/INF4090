@@ -1,0 +1,44 @@
+# Large data files (over 100MB) - DO NOT commit to git
+data/processed/*.csv
+data/processed/*.parquet
+
+# Original Excel data files (also large)
+data/*.xlsx
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# Data quality reports (can regenerate)
+data/processed/*.txt
+
+# Keep only the scripts, not the generated data
