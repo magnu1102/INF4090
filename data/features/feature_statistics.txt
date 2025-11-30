@@ -1,30 +1,282 @@
 ================================================================================
 FEATURE STATISTICS REPORT
 ================================================================================
-Generated: 2025-11-30
+Generated: 2025-11-30 18:51:55.678092
 
 Dataset: feature_dataset_v1.parquet
 Total rows: 280,840
 Total companies: 114,848
-Years: [2016, 2017, 2018]
+Years: [np.int64(2016), np.int64(2017), np.int64(2018)]
 
-Features added: 37 (includes temporal, liquidity, leverage, profitability features)
+Features added: 39
 
-Note: This file was generated after successful feature engineering.
-      See feature_calculation_log.md for detailed formulas and theoretical basis.
-      The main dataset contains all original columns plus 37 derived features.
+likviditetsgrad_1:
+  Calculated: 263,917
+  Missing: 16,923
+  Mean: 226.0420
+  Std: 32570.0275
+  Min: -3578402.0000
+  Max: 10450944.0000
 
-Key Feature Categories:
-- Financial Ratios (11): Liquidity, leverage, profitability, coverage, Altman Z-Score
-- Temporal Features (10): Growth rates, trends, volatility
-- Missingness Features (7): Filing status, completeness indicators
-- Company Characteristics (4): Age, size
-- Warning Signals (5): Critical threshold violations
+likviditetsgrad_2:
+  Calculated: 263,917
+  Missing: 16,923
+  Mean: 226.0420
+  Std: 32570.0275
+  Min: -3578402.0000
+  Max: 10450944.0000
 
-All features successfully calculated and saved to:
-- feature_dataset_v1.parquet (105 MB)
-- feature_dataset_v1.csv (1.1 GB)
+total_gjeldsgrad:
+  Calculated: 264,202
+  Missing: 16,638
+  Mean: 750.6455
+  Std: 142804.6662
+  Min: -2186413.6000
+  Max: 68963100.0000
 
-For detailed statistics on each feature, load the parquet file and use:
-  df = pd.read_parquet('feature_dataset_v1.parquet')
-  df.describe()
+langsiktig_gjeldsgrad:
+  Calculated: 271,285
+  Missing: 9,555
+  Mean: 509.2214
+  Std: 137319.4762
+  Min: -1432118.4000
+  Max: 68871650.0000
+
+kortsiktig_gjeldsgrad:
+  Calculated: 264,230
+  Missing: 16,610
+  Mean: 256.9473
+  Std: 25252.2709
+  Min: -754295.2000
+  Max: 5750863.0000
+
+egenkapitalandel:
+  Calculated: 264,202
+  Missing: 16,638
+  Mean: -749.6455
+  Std: 142804.6662
+  Min: -68963099.0000
+  Max: 2186414.6000
+
+driftsmargin:
+  Calculated: 232,407
+  Missing: 48,433
+  Mean: -15.2778
+  Std: 4413.1311
+  Min: -1670405.0000
+  Max: 160969.0000
+
+totalkapitalrentabilitet:
+  Calculated: 269,865
+  Missing: 10,975
+  Mean: -16.7187
+  Std: 2740.4076
+  Min: -899860.6667
+  Max: 383825.0000
+
+omsetningsgrad:
+  Calculated: 219,422
+  Missing: 61,418
+  Mean: 13.1777
+  Std: 1561.4864
+  Min: -32901.0000
+  Max: 583840.0000
+
+rentedekningsgrad:
+  Calculated: 245,622
+  Missing: 35,218
+  Mean: 771.0529
+  Std: 132895.8007
+  Min: -19842398.0000
+  Max: 59320402.0000
+
+altman_z_score:
+  Calculated: 217,220
+  Missing: 63,620
+  Mean: -22.6033
+  Std: 10398.1696
+  Min: -3596197.0123
+  Max: 1492276.5030
+
+omsetningsvekst_1617:
+  Calculated: 182,599
+  Missing: 98,241
+  Mean: 80.9658
+  Std: 17412.0752
+  Min: -7351.0000
+  Max: 4278049.0000
+
+omsetningsvekst_1718:
+  Calculated: 182,329
+  Missing: 98,511
+  Mean: 3.1732
+  Std: 308.5758
+  Min: -16772.6368
+  Max: 69652.2759
+
+aktivavekst_1617:
+  Calculated: 224,369
+  Missing: 56,471
+  Mean: 32.1228
+  Std: 5335.6042
+  Min: -1053.3551
+  Max: 1238999.0000
+
+aktivavekst_1718:
+  Calculated: 224,190
+  Missing: 56,650
+  Mean: 658.6408
+  Std: 138846.3869
+  Min: -12267.2174
+  Max: 31999999.0000
+
+gjeldsvekst_1617:
+  Calculated: 219,152
+  Missing: 61,688
+  Mean: 6.3695
+  Std: 949.3096
+  Min: -119477.6119
+  Max: 190846.1875
+
+gjeldsvekst_1718:
+  Calculated: 218,982
+  Missing: 61,858
+  Mean: 56.8854
+  Std: 7524.5032
+  Min: -5884.1240
+  Max: 2059022.6667
+
+fallende_likviditet:
+  Calculated: 276,685
+  Missing: 4,155
+  Mean: 0.1547
+
+konsistent_underskudd:
+  Calculated: 276,685
+  Missing: 4,155
+  Mean: 0.1196
+
+økende_gjeldsgrad:
+  Calculated: 276,685
+  Missing: 4,155
+  Mean: 0.1613
+
+omsetningsvolatilitet:
+  Calculated: 203,601
+  Missing: 77,239
+  Mean: inf
+  Std: nan
+  Min: -49496.0605
+  Max: inf
+
+levert_alle_år:
+  Calculated: 280,840
+  Missing: 0
+  Mean: 0.5861
+  Std: 0.4925
+  Min: 0.0000
+  Max: 1.0000
+
+levert_2018:
+  Calculated: 280,840
+  Missing: 0
+  Mean: 0.7786
+  Std: 0.4152
+  Min: 0.0000
+  Max: 1.0000
+
+antall_år_levert:
+  Calculated: 280,840
+  Missing: 0
+  Mean: 2.4453
+  Std: 0.8658
+  Min: 1.0000
+  Max: 6.0000
+
+regnskapskomplett:
+  Calculated: 280,840
+  Missing: 0
+  Mean: 0.3481
+  Std: 0.4764
+  Min: 0.0000
+  Max: 1.0000
+
+kan_ikke_beregne_likviditet:
+  Calculated: 280,840
+  Missing: 0
+  Mean: 0.0558
+  Std: 0.2295
+  Min: 0.0000
+  Max: 1.0000
+
+kan_ikke_beregne_gjeldsgrad:
+  Calculated: 280,840
+  Missing: 0
+  Mean: 0.0559
+  Std: 0.2297
+  Min: 0.0000
+  Max: 1.0000
+
+selskapsalder:
+  Calculated: 274,084
+  Missing: 6,756
+  Mean: 11.4651
+  Std: 12.4819
+  Min: 0.0000
+  Max: 195.0000
+
+nytt_selskap:
+  Calculated: 274,084
+  Missing: 6,756
+  Mean: 0.4249
+
+log_totalkapital:
+  Calculated: 272,271
+  Missing: 8,569
+  Mean: -inf
+  Std: nan
+  Min: -inf
+  Max: 25.8647
+
+log_omsetning:
+  Calculated: 219,655
+  Missing: 61,185
+  Mean: -inf
+  Std: nan
+  Min: -inf
+  Max: 24.5774
+
+byttet_revisor_1617:
+  Calculated: 280,840
+  Missing: 0
+  Mean: 0.0597
+
+byttet_revisor_1718:
+  Calculated: 280,840
+  Missing: 0
+  Mean: 0.0562
+
+byttet_revisor_noensinne:
+  Calculated: 280,840
+  Missing: 0
+  Mean: 0.1109
+
+negativ_egenkapital:
+  Calculated: 264,202
+  Missing: 0
+
+sterkt_overbelånt:
+  Calculated: 264,202
+  Missing: 0
+
+kan_ikke_dekke_renter:
+  Calculated: 245,622
+  Missing: 0
+
+lav_likviditet:
+  Calculated: 263,917
+  Missing: 0
+
+driftsunderskudd:
+  Calculated: 271,118
+  Missing: 0

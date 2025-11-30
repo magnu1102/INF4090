@@ -445,6 +445,55 @@ print(f"    log_omsetning: {calc_count:,} calculated, {miss_count:,} missing")
 print(f"\n  Company Characteristics: 4 features calculated")
 
 # ============================================================================
+# ADDITIONAL COMPANY CHARACTERISTIC: AUDITOR CHANGE
+# ============================================================================
+print("\n  [5.1] Auditor Change Detection...")
+
+# Check if revisor (auditor) changed between years
+# Create pivot to compare revisor across years
+revisor_pivot = df_features.pivot_table(
+    index='Orgnr',
+    columns='year',
+    values='Revisor',
+    aggfunc='first'
+).reset_index()
+
+revisor_pivot.columns = [f'Revisor_{col}' if col != 'Orgnr' else col for col in revisor_pivot.columns]
+
+# Check for changes
+revisor_pivot['byttet_revisor_1617'] = (
+    (revisor_pivot['Revisor_2016'].notna()) &
+    (revisor_pivot['Revisor_2017'].notna()) &
+    (revisor_pivot['Revisor_2016'] != revisor_pivot['Revisor_2017'])
+).astype(float)
+
+revisor_pivot['byttet_revisor_1718'] = (
+    (revisor_pivot['Revisor_2017'].notna()) &
+    (revisor_pivot['Revisor_2018'].notna()) &
+    (revisor_pivot['Revisor_2017'] != revisor_pivot['Revisor_2018'])
+).astype(float)
+
+# Any change during the period
+revisor_pivot['byttet_revisor_noensinne'] = (
+    (revisor_pivot['byttet_revisor_1617'] == 1) |
+    (revisor_pivot['byttet_revisor_1718'] == 1)
+).astype(float)
+
+# Merge back to main dataset
+revisor_cols = ['Orgnr', 'byttet_revisor_1617', 'byttet_revisor_1718', 'byttet_revisor_noensinne']
+df_features = df_features.merge(revisor_pivot[revisor_cols], on='Orgnr', how='left')
+
+for col in revisor_cols[1:]:
+    calc_count = df_features.groupby('Orgnr')[col].first().notna().sum()
+    companies_changed = df_features.groupby('Orgnr')[col].first().sum()
+    stats = {'sum': companies_changed, 'mean': companies_changed / calc_count if calc_count > 0 else 0}
+    log_feature(col, 'Auditor changed between years (0/1)',
+                'Distress signal - auditor changes', len(df_features), 0, stats)
+    print(f"    {col}: {companies_changed:,.0f} companies changed auditor")
+
+print(f"\n  Auditor Change Features: 3 features calculated")
+
+# ============================================================================
 # CATEGORY 5: WARNING SIGNALS (5 features)
 # ============================================================================
 print("\n[6/6] Calculating Warning Signals...")
@@ -555,8 +604,8 @@ categories = {
     'Financial Ratios': features_added[0:11],
     'Temporal Features': features_added[11:21],
     'Missingness Features': features_added[21:28],
-    'Company Characteristics': features_added[28:32],
-    'Warning Signals': features_added[32:37]
+    'Company Characteristics': features_added[28:35],  # Now includes 4 + 3 auditor features
+    'Warning Signals': features_added[35:40]  # Shifted by 3
 }
 
 for cat_name, feature_list in categories.items():
@@ -617,11 +666,15 @@ for feature_info in calculation_log:
     stats_lines.append(f"{feature_info['name']}:")
     stats_lines.append(f"  Calculated: {feature_info['calculated']:,}")
     stats_lines.append(f"  Missing: {feature_info['missing']:,}")
-    if feature_info.get('mean'):
+    if feature_info.get('mean') is not None:
         stats_lines.append(f"  Mean: {feature_info['mean']:.4f}")
+    if feature_info.get('median') is not None:
         stats_lines.append(f"  Median: {feature_info['median']:.4f}")
+    if feature_info.get('std') is not None:
         stats_lines.append(f"  Std: {feature_info['std']:.4f}")
+    if feature_info.get('min') is not None:
         stats_lines.append(f"  Min: {feature_info['min']:.4f}")
+    if feature_info.get('max') is not None:
         stats_lines.append(f"  Max: {feature_info['max']:.4f}")
     stats_lines.append("")
 

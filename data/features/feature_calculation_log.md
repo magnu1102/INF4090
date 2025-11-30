@@ -1,5 +1,5 @@
 # Feature Calculation Log - Version 1
-Generated: 2025-11-30 18:39:54.367029
+Generated: 2025-11-30 18:51:55.667094
 
 ## Source Data
 - Input: ..\processed\norwegian_companies_panel.parquet
@@ -7,7 +7,7 @@ Generated: 2025-11-30 18:39:54.367029
 - Companies: 114,848
 - Years: [np.int64(2016), np.int64(2017), np.int64(2018)]
 
-## Features Added: 36
+## Features Added: 39
 
 ### Financial Ratios (11 features)
 
@@ -211,7 +211,7 @@ Generated: 2025-11-30 18:39:54.367029
 - **Missing:** 6,756 rows
 - **Mean:** 11.4651
 
-### Company Characteristics (4 features)
+### Company Characteristics (7 features)
 
 #### nytt_selskap
 - **Formula:** `selskapsalder <= 5`
@@ -233,6 +233,27 @@ Generated: 2025-11-30 18:39:54.367029
 - **Calculated for:** 219,655 rows
 - **Missing:** 61,185 rows
 - **Mean:** -inf
+
+#### byttet_revisor_1617
+- **Formula:** `Auditor changed between years (0/1)`
+- **Theory:** Distress signal - auditor changes
+- **Calculated for:** 280,840 rows
+- **Missing:** 0 rows
+- **Mean:** 0.0597
+
+#### byttet_revisor_1718
+- **Formula:** `Auditor changed between years (0/1)`
+- **Theory:** Distress signal - auditor changes
+- **Calculated for:** 280,840 rows
+- **Missing:** 0 rows
+- **Mean:** 0.0562
+
+#### byttet_revisor_noensinne
+- **Formula:** `Auditor changed between years (0/1)`
+- **Theory:** Distress signal - auditor changes
+- **Calculated for:** 280,840 rows
+- **Missing:** 0 rows
+- **Mean:** 0.1109
 
 #### negativ_egenkapital
 - **Formula:** `egenkapitalandel < 0`
