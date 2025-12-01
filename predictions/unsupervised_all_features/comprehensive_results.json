@@ -1,0 +1,41 @@
+{
+  "model": "Comprehensive Unsupervised Learning (All Features)",
+  "date": "2025-12-01T16:55:02.847162",
+  "data": {
+    "total_observations": 280840,
+    "total_companies": 114848,
+    "bankruptcy_rate": 0.07404928072924084,
+    "years_used": [
+      2016,
+      2017,
+      2018
+    ]
+  },
+  "features": {
+    "numeric_features": 48,
+    "categorical_features": 36,
+    "missingness_indicators": 12,
+    "total_features": 96,
+    "pca_components": 50,
+    "variance_explained_by_pca": 0.9315486683675924
+  },
+  "clustering": {
+    "kmeans": {
+      "n_clusters": 2,
+      "silhouette_score": 0.5808098287562425,
+      "cluster_sizes": [
+        272881,
+        7959
+      ],
+      "cluster_bankruptcy_rates": [
+        0.047,
+        1.0
+      ]
+    },
+    "dbscan": {
+      "n_clusters": 10,
+      "n_noise_points": 18363,
+      "noise_percentage": 6.538598490243555
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "model": "Fast Comprehensive Model (20% sample)",
+  "date": "2025-12-01T15:49:14.085945",
+  "data": {
+    "sample_size": 56168,
+    "sample_fraction": 0.2,
+    "bankruptcy_rate": 0.07406352371457058
+  },
+  "features": {
+    "numeric": 48,
+    "categorical": 36,
+    "total": 84
+  },
+  "pca": {
+    "n_components": 30,
+    "variance_explained": 0.788709846856643
+  },
+  "clustering": {
+    "best_k": 3,
+    "silhouette_score": 0.6499669858097504,
+    "cluster_sizes": [
+      54412,
+      223,
+      1533
+    ],
+    "cluster_bankruptcy_rates": [
+      0.0483,
+      0.0,
+      1.0
+    ]
+  }
+}
