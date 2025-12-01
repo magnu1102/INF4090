@@ -1,0 +1,68 @@
+{
+  "model": "Logistic Regression (All Years)",
+  "date": "2025-12-01T15:06:34.543290",
+  "data": {
+    "total_observations": 280840,
+    "complete_cases": 155724,
+    "train_size": 124579,
+    "test_size": 31145,
+    "bankruptcy_rate": 0.02078677660476227,
+    "years_used": [
+      2016,
+      2017,
+      2018
+    ]
+  },
+  "features": {
+    "total_features": 24,
+    "feature_list": [
+      "likviditetsgrad_1",
+      "likviditetsgrad_2",
+      "total_gjeldsgrad",
+      "egenkapitalandel",
+      "rentedekningsgrad",
+      "driftsmargin",
+      "totalkapitalrentabilitet",
+      "altman_z_score",
+      "omsetningsvekst_1617",
+      "omsetningsvekst_1718",
+      "fallende_likviditet",
+      "konsistent_underskudd",
+      "levert_alle_\u00e5r",
+      "levert_2018",
+      "regnskapskomplett",
+      "selskapsalder",
+      "nytt_selskap",
+      "log_totalkapital",
+      "negativ_egenkapital",
+      "sterkt_overbel\u00e5nt",
+      "lav_likviditet",
+      "byttet_revisor_1617",
+      "byttet_revisor_1718",
+      "byttet_revisor_noensinne"
+    ]
+  },
+  "performance": {
+    "cross_validation": {
+      "mean_roc_auc": 0.9679440230514652,
+      "std_roc_auc": 0.003606967570304212,
+      "cv_folds": 5
+    },
+    "train": {
+      "roc_auc": 0.9695925207004075
+    },
+    "test": {
+      "roc_auc": 0.9651564047121746,
+      "confusion_matrix": [
+        [
+          29382,
+          1116
+        ],
+        [
+          91,
+          556
+        ]
+      ]
+    }
+  }
+}
