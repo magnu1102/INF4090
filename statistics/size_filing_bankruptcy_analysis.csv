@@ -1,0 +1,11 @@
+size_category,filed_all_years,Companies,Bankruptcies,Bankruptcy_Rate,Bankruptcy_Rate_Pct
+Large (100+),False,108,3,0.0278,2.78
+Large (100+),True,1178,16,0.0136,1.36
+Medium (21-100),False,1277,35,0.0274,2.74
+Medium (21-100),True,7411,179,0.0242,2.42
+Small (1-20),False,6568,307,0.0467,4.67
+Small (1-20),True,22420,881,0.0393,3.93
+Unknown,False,10995,418,0.038,3.8
+Unknown,True,18439,974,0.0528,5.28
+Zero employees,False,26629,879,0.033,3.3
+Zero employees,True,19823,2500,0.1261,12.61
