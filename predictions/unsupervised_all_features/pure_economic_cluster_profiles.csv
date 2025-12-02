@@ -1,0 +1,5 @@
+,altman_z_score,altman_z_score,altman_z_score,likviditetsgrad_1,likviditetsgrad_1,likviditetsgrad_1,total_gjeldsgrad,total_gjeldsgrad,total_gjeldsgrad,egenkapitalandel,egenkapitalandel,egenkapitalandel,driftsmargin,driftsmargin,driftsmargin,totalkapitalrentabilitet,totalkapitalrentabilitet,totalkapitalrentabilitet,negativ_egenkapital,negativ_egenkapital,negativ_egenkapital
+,mean,median,std,mean,median,std,mean,median,std,mean,median,std,mean,median,std,mean,median,std,mean,median,std
+cluster,,,,,,,,,,,,,,,,,,,,,
+0,3.5705,3.0569,17.2439,16.4884,1.3718,193.5361,14.1754,0.7218,285.2664,-13.1754,0.2782,285.2664,-0.3443,0.0304,5.4252,-0.9805,0.0252,20.1371,0.1904,0.0,0.3926
+1,2.8921,2.5089,4.6939,12.0183,1.1693,210.3268,0.6828,0.6914,0.8815,0.3172,0.3086,0.8815,-0.3341,0.0304,6.4145,0.071,0.0525,0.1161,0.0191,0.0,0.1371

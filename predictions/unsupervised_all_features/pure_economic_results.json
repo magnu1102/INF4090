@@ -1,0 +1,53 @@
+{
+  "model": "Pure Economic Fundamentals Model",
+  "date": "2025-12-02T14:41:02.262901",
+  "focus": "Pure economic/financial distress (NO company characteristics, NO filing behavior)",
+  "data": {
+    "total_observations": 280840,
+    "bankruptcy_rate": 0.07404928072924084
+  },
+  "features": {
+    "raw_accounting_fields": 9,
+    "financial_ratios": 11,
+    "warning_signals": 4,
+    "total": 24,
+    "excluded_types": [
+      "missingness_indicators",
+      "filing_behavior",
+      "company_characteristics",
+      "temporal_growth",
+      "industry_location",
+      "auditor_info"
+    ]
+  },
+  "pca": {
+    "n_components": 20,
+    "variance_explained": 0.9967764458823062,
+    "pc1_variance": 0.2155442540981349
+  },
+  "clustering": {
+    "algorithm": "K-Means (parallel processing)",
+    "best_k": 2,
+    "silhouette_score": 0.9046791214379182,
+    "cluster_sizes": [
+      279743,
+      1097
+    ],
+    "cluster_bankruptcy_rates": [
+      0.0743,
+      0.0027
+    ]
+  },
+  "most_distinctive_features": {
+    "Tall 72": 2.5709819777964805e+18,
+    "Tall 1340": 2.4992492400222397e+18,
+    "Tall 217": 7.029857635887502e+17,
+    "Tall 194": 4.731724188451118e+17,
+    "Tall 85": 3.7987594090387117e+17,
+    "Tall 86": 6.855849298291453e+16,
+    "Tall 146": 3521949843843617.5,
+    "Tall 7709": 1380332823545922.5,
+    "Tall 17130": 1048687916030858.0,
+    "rentedekningsgrad": 26635.47323831184
+  }
+}
