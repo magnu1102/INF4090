@@ -1,0 +1,16 @@
+Feature,Coefficient
+levert_alle_år,-1.5578177046166692
+antall_år_levert,1.5099284808048592
+likviditetsgrad_2,-0.08760455047379354
+likviditetsgrad_1,-0.08760455047379354
+totalkapitalrentabilitet,-0.06107181448610718
+altman_z_score,-0.057497709051962165
+total_gjeldsgrad,-0.053656452499693766
+egenkapitalandel,0.05365645249969375
+kortsiktig_gjeldsgrad,-0.05314720523639454
+omsetningsgrad,-0.04829897511086956
+langsiktig_gjeldsgrad,-0.04513483310005966
+omsetningsvolatilitet,-0.035741436345821824
+aktivavekst_1718,-0.029902089300797588
+log_omsetning,0.02524694258402406
+fallende_likviditet,0.01863119429548534

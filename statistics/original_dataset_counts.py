@@ -19,11 +19,11 @@ print("ORIGINAL DATASET COMPANY COUNTS")
 print("="*70)
 
 # Find data files
-data_dir = Path(r'C:\Users\magnu\Desktop\AI Management')
+data_dir = Path(r'C:\Users\magnu\Desktop\AI Management\INF4090\data')
 
 # Non-bankrupt companies files
 books2016_path = data_dir / 'books2016.xlsx'
-books2017_path = data_dir / 'books2017.xlsx'
+books2017_path = data_dir / 'book2017.xlsx'  # Note: singular "book" not "books"
 books2018_path = data_dir / 'books2018.xlsx'
 
 # Bankrupt companies file (with multiple tabs)
@@ -35,7 +35,8 @@ print("="*70)
 
 # Load and count books2016
 print("\nLoading books2016.xlsx...")
-df_2016 = pd.read_excel(books2016_path)
+df_2016 = pd.read_excel(books2016_path, header=1, skiprows=[2])
+df_2016.columns = df_2016.columns.str.strip()  # Remove trailing spaces
 unique_2016 = df_2016['Orgnr'].nunique()
 total_2016 = len(df_2016)
 print(f"  Total rows: {total_2016:,}")
@@ -43,7 +44,8 @@ print(f"  Unique Orgnr: {unique_2016:,}")
 
 # Load and count books2017
 print("\nLoading books2017.xlsx...")
-df_2017 = pd.read_excel(books2017_path)
+df_2017 = pd.read_excel(books2017_path, header=1, skiprows=[2])
+df_2017.columns = df_2017.columns.str.strip()
 unique_2017 = df_2017['Orgnr'].nunique()
 total_2017 = len(df_2017)
 print(f"  Total rows: {total_2017:,}")
@@ -51,7 +53,8 @@ print(f"  Unique Orgnr: {unique_2017:,}")
 
 # Load and count books2018
 print("\nLoading books2018.xlsx...")
-df_2018 = pd.read_excel(books2018_path)
+df_2018 = pd.read_excel(books2018_path, header=1, skiprows=[2])
+df_2018.columns = df_2018.columns.str.strip()
 unique_2018 = df_2018['Orgnr'].nunique()
 total_2018 = len(df_2018)
 print(f"  Total rows: {total_2018:,}")
@@ -76,10 +79,13 @@ print("="*70)
 print("\nLoading konkurser2019.xlsx...")
 print("This file has separate tabs for 2016, 2017, and 2018")
 
-# Load each tab
-konkurser_2016 = pd.read_excel(konkurser_path, sheet_name='2016')
-konkurser_2017 = pd.read_excel(konkurser_path, sheet_name='2017')
-konkurser_2018 = pd.read_excel(konkurser_path, sheet_name='2018')
+# Load each tab (konkurser has different structure: header=0, skip row 1 which has dashes)
+konkurser_2016 = pd.read_excel(konkurser_path, sheet_name='2016', header=0, skiprows=[1])
+konkurser_2016.columns = konkurser_2016.columns.str.strip()
+konkurser_2017 = pd.read_excel(konkurser_path, sheet_name='2017', header=0, skiprows=[1])
+konkurser_2017.columns = konkurser_2017.columns.str.strip()
+konkurser_2018 = pd.read_excel(konkurser_path, sheet_name='2018', header=0, skiprows=[1])
+konkurser_2018.columns = konkurser_2018.columns.str.strip()
 
 unique_konkurs_2016 = konkurser_2016['Orgnr'].nunique()
 unique_konkurs_2017 = konkurser_2017['Orgnr'].nunique()

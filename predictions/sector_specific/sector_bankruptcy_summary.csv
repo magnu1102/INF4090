@@ -1,0 +1,5 @@
+Sector_Code,Sector_Name,Status,N_Total_Observations,N_Complete_Cases,N_Bankruptcies,Bankruptcy_Rate,CV_ROC_AUC,CV_Precision,CV_Recall,Final_ROC_AUC,Final_Precision,Final_Recall
+C,Industri,Success,34223,15559,102,0.66%,1.0000,0.9909,1.0000,1.0000,1.0000,1.0000
+F,Byggje- og anleggsverksemd,Success,111802,34137,572,1.68%,1.0000,0.9983,1.0000,1.0000,1.0000,1.0000
+G,"Varehandel, reparasjon av motorvogner",Success,100339,42928,685,1.60%,0.9913,0.5590,0.9518,0.9950,0.5550,0.9577
+I,Overnattings- og serveringsverksemd,Success,26265,13308,480,3.61%,1.0000,1.0000,1.0000,1.0000,1.0000,1.0000

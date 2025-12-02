@@ -1,0 +1,14 @@
+Dataset,Total_Rows,Unique_Orgnr
+books2016.xlsx,80731.0,80731.0
+books2017.xlsx,99750.0,99750.0
+books2018.xlsx,83971.0,83971.0
+konkurser2019.xlsx (2016 tab),4570.0,4570.0
+konkurser2019.xlsx (2017 tab),5647.0,5647.0
+konkurser2019.xlsx (2018 tab),6165.0,6165.0
+---,,
+All non-bankrupt (combined),264452.0,111040.0
+All bankrupt (combined),16382.0,6191.0
+Companies in both,,2384.0
+Companies only non-bankrupt,,108656.0
+Companies only bankrupt,,3807.0
+Total unique companies,,114847.0

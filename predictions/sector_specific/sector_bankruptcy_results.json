@@ -1,0 +1,413 @@
+{
+  "analysis_date": "2025-12-02T20:55:01.317299",
+  "description": "Sector-specific bankruptcy prediction models",
+  "sectors_analyzed": [
+    "C",
+    "F",
+    "G",
+    "I"
+  ],
+  "features_used": [
+    "likviditetsgrad_1",
+    "likviditetsgrad_2",
+    "total_gjeldsgrad",
+    "langsiktig_gjeldsgrad",
+    "kortsiktig_gjeldsgrad",
+    "egenkapitalandel",
+    "driftsmargin",
+    "totalkapitalrentabilitet",
+    "omsetningsgrad",
+    "rentedekningsgrad",
+    "altman_z_score",
+    "omsetningsvekst_1617",
+    "omsetningsvekst_1718",
+    "aktivavekst_1617",
+    "aktivavekst_1718",
+    "gjeldsvekst_1617",
+    "gjeldsvekst_1718",
+    "omsetningsvolatilitet",
+    "negativ_egenkapital",
+    "sterkt_overbel\u00e5nt",
+    "lav_likviditet",
+    "driftsunderskudd",
+    "fallende_likviditet",
+    "konsistent_underskudd",
+    "\u00f8kende_gjeldsgrad",
+    "selskapsalder",
+    "nytt_selskap",
+    "log_totalkapital",
+    "log_omsetning",
+    "Antall ansatte",
+    "levert_alle_\u00e5r",
+    "levert_2018",
+    "antall_\u00e5r_levert",
+    "regnskapskomplett"
+  ],
+  "n_features": 34,
+  "sectors": {
+    "C": {
+      "sector_name": "Industri",
+      "n_total_observations": 34223,
+      "n_complete_cases": 15559,
+      "n_bankruptcies": 102,
+      "bankruptcy_rate": 0.006555691239796902,
+      "cv_scores": {
+        "roc_auc_mean": 1.0,
+        "roc_auc_std": 0.0,
+        "precision_mean": 0.990909090909091,
+        "precision_std": 0.018181818181818167,
+        "recall_mean": 1.0,
+        "recall_std": 0.0,
+        "f1_mean": 0.9953488372093023,
+        "f1_std": 0.009302325581395366
+      },
+      "final_metrics": {
+        "roc_auc": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "confusion_matrix": {
+        "TN": 15457,
+        "FP": 0,
+        "FN": 0,
+        "TP": 102
+      },
+      "top_features": [
+        {
+          "Feature": "antall_\u00e5r_levert",
+          "Coefficient": 1.009124129812516
+        },
+        {
+          "Feature": "levert_alle_\u00e5r",
+          "Coefficient": -1.0091241298125149
+        },
+        {
+          "Feature": "lav_likviditet",
+          "Coefficient": -0.017720240142843707
+        },
+        {
+          "Feature": "driftsunderskudd",
+          "Coefficient": -0.017555584078253382
+        },
+        {
+          "Feature": "Antall ansatte",
+          "Coefficient": -0.01624998877493023
+        },
+        {
+          "Feature": "omsetningsvolatilitet",
+          "Coefficient": -0.015500891129900544
+        },
+        {
+          "Feature": "konsistent_underskudd",
+          "Coefficient": -0.015228661508897762
+        },
+        {
+          "Feature": "sterkt_overbel\u00e5nt",
+          "Coefficient": -0.014072256780052056
+        },
+        {
+          "Feature": "negativ_egenkapital",
+          "Coefficient": -0.014062200357068544
+        },
+        {
+          "Feature": "\u00f8kende_gjeldsgrad",
+          "Coefficient": -0.011258852027199088
+        },
+        {
+          "Feature": "gjeldsvekst_1718",
+          "Coefficient": -0.007788926088679786
+        },
+        {
+          "Feature": "omsetningsvekst_1718",
+          "Coefficient": -0.007321850444139696
+        },
+        {
+          "Feature": "aktivavekst_1718",
+          "Coefficient": -0.006840964810233137
+        },
+        {
+          "Feature": "log_omsetning",
+          "Coefficient": 0.006735502896597606
+        },
+        {
+          "Feature": "log_totalkapital",
+          "Coefficient": -0.005270399075124943
+        }
+      ]
+    },
+    "F": {
+      "sector_name": "Byggje- og anleggsverksemd",
+      "n_total_observations": 111802,
+      "n_complete_cases": 34137,
+      "n_bankruptcies": 572,
+      "bankruptcy_rate": 0.016756012537715675,
+      "cv_scores": {
+        "roc_auc_mean": 1.0,
+        "roc_auc_std": 0.0,
+        "precision_mean": 0.9982608695652175,
+        "precision_std": 0.003478260869565197,
+        "recall_mean": 1.0,
+        "recall_std": 0.0,
+        "f1_mean": 0.9991266375545852,
+        "f1_std": 0.0017467248908296985
+      },
+      "final_metrics": {
+        "roc_auc": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "confusion_matrix": {
+        "TN": 33565,
+        "FP": 0,
+        "FN": 0,
+        "TP": 572
+      },
+      "top_features": [
+        {
+          "Feature": "levert_alle_\u00e5r",
+          "Coefficient": -1.5578177046166692
+        },
+        {
+          "Feature": "antall_\u00e5r_levert",
+          "Coefficient": 1.5099284808048592
+        },
+        {
+          "Feature": "likviditetsgrad_2",
+          "Coefficient": -0.08760455047379354
+        },
+        {
+          "Feature": "likviditetsgrad_1",
+          "Coefficient": -0.08760455047379354
+        },
+        {
+          "Feature": "totalkapitalrentabilitet",
+          "Coefficient": -0.06107181448610718
+        },
+        {
+          "Feature": "altman_z_score",
+          "Coefficient": -0.057497709051962165
+        },
+        {
+          "Feature": "total_gjeldsgrad",
+          "Coefficient": -0.053656452499693766
+        },
+        {
+          "Feature": "egenkapitalandel",
+          "Coefficient": 0.05365645249969375
+        },
+        {
+          "Feature": "kortsiktig_gjeldsgrad",
+          "Coefficient": -0.05314720523639454
+        },
+        {
+          "Feature": "omsetningsgrad",
+          "Coefficient": -0.04829897511086956
+        },
+        {
+          "Feature": "langsiktig_gjeldsgrad",
+          "Coefficient": -0.04513483310005966
+        },
+        {
+          "Feature": "omsetningsvolatilitet",
+          "Coefficient": -0.035741436345821824
+        },
+        {
+          "Feature": "aktivavekst_1718",
+          "Coefficient": -0.029902089300797588
+        },
+        {
+          "Feature": "log_omsetning",
+          "Coefficient": 0.02524694258402406
+        },
+        {
+          "Feature": "fallende_likviditet",
+          "Coefficient": 0.01863119429548534
+        }
+      ]
+    },
+    "G": {
+      "sector_name": "Varehandel, reparasjon av motorvogner",
+      "n_total_observations": 100339,
+      "n_complete_cases": 42928,
+      "n_bankruptcies": 685,
+      "bankruptcy_rate": 0.01595695117405889,
+      "cv_scores": {
+        "roc_auc_mean": 0.9913466910200484,
+        "roc_auc_std": 0.004741108051335008,
+        "precision_mean": 0.5589753421553603,
+        "precision_std": 0.076623221275572,
+        "recall_mean": 0.9518248175182482,
+        "recall_std": 0.015030116994141638,
+        "f1_mean": 0.7007433485123817,
+        "f1_std": 0.05727353556011529
+      },
+      "final_metrics": {
+        "roc_auc": 0.9950122777651927,
+        "precision": 0.5549915397631133,
+        "recall": 0.9576642335766423,
+        "f1": 0.7027316550615962
+      },
+      "confusion_matrix": {
+        "TN": 41717,
+        "FP": 526,
+        "FN": 29,
+        "TP": 656
+      },
+      "top_features": [
+        {
+          "Feature": "Antall ansatte",
+          "Coefficient": -2.9761268320476284
+        },
+        {
+          "Feature": "omsetningsgrad",
+          "Coefficient": -1.5107350387667116
+        },
+        {
+          "Feature": "levert_alle_\u00e5r",
+          "Coefficient": -1.0723588446608276
+        },
+        {
+          "Feature": "antall_\u00e5r_levert",
+          "Coefficient": 1.0639123060919644
+        },
+        {
+          "Feature": "totalkapitalrentabilitet",
+          "Coefficient": 1.0426056175316885
+        },
+        {
+          "Feature": "negativ_egenkapital",
+          "Coefficient": 0.8770351463488101
+        },
+        {
+          "Feature": "log_omsetning",
+          "Coefficient": 0.7909836775770877
+        },
+        {
+          "Feature": "\u00f8kende_gjeldsgrad",
+          "Coefficient": 0.7584241107234929
+        },
+        {
+          "Feature": "log_totalkapital",
+          "Coefficient": -0.48726491727230853
+        },
+        {
+          "Feature": "driftsmargin",
+          "Coefficient": 0.3475644232799101
+        },
+        {
+          "Feature": "fallende_likviditet",
+          "Coefficient": 0.32399719354805223
+        },
+        {
+          "Feature": "nytt_selskap",
+          "Coefficient": 0.3189741243352656
+        },
+        {
+          "Feature": "selskapsalder",
+          "Coefficient": 0.2999102739109916
+        },
+        {
+          "Feature": "regnskapskomplett",
+          "Coefficient": -0.2395141342881201
+        },
+        {
+          "Feature": "sterkt_overbel\u00e5nt",
+          "Coefficient": 0.19766400544073884
+        }
+      ]
+    },
+    "I": {
+      "sector_name": "Overnattings- og serveringsverksemd",
+      "n_total_observations": 26265,
+      "n_complete_cases": 13308,
+      "n_bankruptcies": 480,
+      "bankruptcy_rate": 0.03606853020739405,
+      "cv_scores": {
+        "roc_auc_mean": 1.0,
+        "roc_auc_std": 0.0,
+        "precision_mean": 1.0,
+        "precision_std": 0.0,
+        "recall_mean": 1.0,
+        "recall_std": 0.0,
+        "f1_mean": 1.0,
+        "f1_std": 0.0
+      },
+      "final_metrics": {
+        "roc_auc": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "confusion_matrix": {
+        "TN": 12828,
+        "FP": 0,
+        "FN": 0,
+        "TP": 480
+      },
+      "top_features": [
+        {
+          "Feature": "levert_alle_\u00e5r",
+          "Coefficient": -2.0030364736143467
+        },
+        {
+          "Feature": "antall_\u00e5r_levert",
+          "Coefficient": 1.700481409089502
+        },
+        {
+          "Feature": "kortsiktig_gjeldsgrad",
+          "Coefficient": -0.11429226989815984
+        },
+        {
+          "Feature": "egenkapitalandel",
+          "Coefficient": 0.11394244203736922
+        },
+        {
+          "Feature": "total_gjeldsgrad",
+          "Coefficient": -0.11394244203736921
+        },
+        {
+          "Feature": "negativ_egenkapital",
+          "Coefficient": 0.11325938692135376
+        },
+        {
+          "Feature": "gjeldsvekst_1718",
+          "Coefficient": 0.1120895439388925
+        },
+        {
+          "Feature": "omsetningsgrad",
+          "Coefficient": -0.09392831410282686
+        },
+        {
+          "Feature": "konsistent_underskudd",
+          "Coefficient": 0.08970399932208364
+        },
+        {
+          "Feature": "omsetningsvolatilitet",
+          "Coefficient": 0.07956489976777897
+        },
+        {
+          "Feature": "regnskapskomplett",
+          "Coefficient": 0.07839810868503347
+        },
+        {
+          "Feature": "log_omsetning",
+          "Coefficient": -0.0673570053565966
+        },
+        {
+          "Feature": "lav_likviditet",
+          "Coefficient": 0.06640553073884133
+        },
+        {
+          "Feature": "altman_z_score",
+          "Coefficient": -0.06455985366096952
+        },
+        {
+          "Feature": "sterkt_overbel\u00e5nt",
+          "Coefficient": 0.05882295217744899
+        }
+      ]
+    }
+  }
+}
