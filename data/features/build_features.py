@@ -48,6 +48,15 @@ print(f"  Years: {sorted(df['year'].unique())}")
 # Create a copy for feature engineering
 df_features = df.copy()
 
+# Merge Tall 7709 (Annen driftsinntekt) into Tall 72 (Sum inntekter)
+# Tall 7709 has 59% missing rate but represents legitimate "Other Operating Income"
+# When present, add it to total income; when missing, use only Tall 72
+print("\n  Merging Tall 7709 (Annen driftsinntekt) into Tall 72 (Sum inntekter)...")
+df_features['Tall 72'] = df_features['Tall 72'].fillna(0) + df_features['Tall 7709'].fillna(0)
+# Set to NaN if both were originally NaN
+df_features.loc[df['Tall 72'].isna() & df['Tall 7709'].isna(), 'Tall 72'] = np.nan
+print(f"    Merged: Tall 72 now includes Annen driftsinntekt when present")
+
 # Track what we add for documentation
 features_added = []
 calculation_log = []
@@ -180,7 +189,8 @@ print("\n  [1.3] Profitability Ratios...")
 # Operating Margin (Driftsmargin)
 # CORRECTED: Use Salgsinntekt (Tall 1340) instead of Sum inntekter (Tall 72)
 # per Norwegian accounting standards
-df_features['driftsmargin'] = safe_divide(df['Tall 146'], df['Tall 1340'])
+# Note: min_denominator=1 because small revenue (<1000 NOK) is legitimate for micro businesses
+df_features['driftsmargin'] = safe_divide(df['Tall 146'], df['Tall 1340'], min_denominator=1)
 calc_count = df_features['driftsmargin'].notna().sum()
 miss_count = df_features['driftsmargin'].isna().sum()
 stats = df_features['driftsmargin'].describe().to_dict()
@@ -202,6 +212,8 @@ log_feature('driftsrentabilitet', 'Tall 146 / (Tall 217 + Tall 194)',
 print(f"    driftsrentabilitet: {calc_count:,} calculated, {miss_count:,} missing")
 
 # Asset Turnover (Omsetningsgrad)
+# Note: Uses _total_assets as denominator (threshold=1000 OK), but numerator is Tall 1340
+# Numerator can be small for micro businesses, but denominator threshold filters appropriately
 df_features['omsetningsgrad'] = safe_divide(df['Tall 1340'], df_features['_total_assets'])
 calc_count = df_features['omsetningsgrad'].notna().sum()
 miss_count = df_features['omsetningsgrad'].isna().sum()
@@ -214,7 +226,9 @@ print(f"    omsetningsgrad: {calc_count:,} calculated, {miss_count:,} missing")
 print("\n  [1.4] Coverage Ratios...")
 
 # Interest Coverage (Rentedekningsgrad)
-df_features['rentedekningsgrad'] = safe_divide(df['Tall 146'], df['Tall 17130'])
+# Note: min_denominator=1 because low/zero interest expense = healthy low-debt company
+# Small Tall 17130 (<1000 NOK) indicates minimal financial costs = POSITIVE signal, not error
+df_features['rentedekningsgrad'] = safe_divide(df['Tall 146'], df['Tall 17130'], min_denominator=1)
 calc_count = df_features['rentedekningsgrad'].notna().sum()
 miss_count = df_features['rentedekningsgrad'].isna().sum()
 stats = df_features['rentedekningsgrad'].describe().to_dict()
@@ -328,13 +342,16 @@ df_pivot = df_pivot.reset_index()
 print("\n  [2.1] Growth Rates...")
 
 # Revenue Growth
+# Note: min_denominator=1 because small starting revenue is legitimate (micro/startup companies)
 df_pivot['omsetningsvekst_1617'] = safe_divide(
     df_pivot['Tall 1340_2017'] - df_pivot['Tall 1340_2016'],
-    df_pivot['Tall 1340_2016']
+    df_pivot['Tall 1340_2016'],
+    min_denominator=1
 )
 df_pivot['omsetningsvekst_1718'] = safe_divide(
     df_pivot['Tall 1340_2018'] - df_pivot['Tall 1340_2017'],
-    df_pivot['Tall 1340_2017']
+    df_pivot['Tall 1340_2017'],
+    min_denominator=1
 )
 
 # Asset Growth
@@ -461,15 +478,16 @@ for col in filing_cols[1:]:
                 'Non-filing as bankruptcy predictor', calc_count, 0, stats)
     print(f"    {col}: All companies ({calc_count:,} rows)")
 
-# Accounting Completeness (all 9 Tall fields present)
-required_fields = ['Tall 1340', 'Tall 7709', 'Tall 72', 'Tall 217', 'Tall 194',
+# Accounting Completeness (all 8 core Tall fields present)
+# Note: Tall 7709 removed after merging into Tall 72
+required_fields = ['Tall 1340', 'Tall 72', 'Tall 217', 'Tall 194',
                    'Tall 86', 'Tall 85', 'Tall 146', 'Tall 17130']
 
 df_features['regnskapskomplett'] = df_features[required_fields].notna().all(axis=1).astype(int)
 
 calc_count = len(df_features)
 stats = df_features['regnskapskomplett'].describe().to_dict()
-log_feature('regnskapskomplett', 'All 9 Tall fields present (0/1)',
+log_feature('regnskapskomplett', 'All 8 core Tall fields present (0/1)',
             'Data quality indicator', calc_count, 0, stats)
 print(f"    regnskapskomplett: {df_features['regnskapskomplett'].sum():,} complete records")
 

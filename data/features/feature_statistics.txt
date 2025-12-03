@@ -1,7 +1,7 @@
 ================================================================================
 FEATURE STATISTICS REPORT
 ================================================================================
-Generated: 2025-12-03 17:05:24.477118
+Generated: 2025-12-03 18:27:26.008671
 
 Dataset: feature_dataset_v1.parquet
 Total rows: 280,840
@@ -51,12 +51,12 @@ egenkapitalandel:
   Max: 89.9286
 
 driftsmargin:
-  Calculated: 216,873
-  Missing: 63,967
-  Mean: 0.2233
-  Std: 68.2092
-  Min: -3547.8945
-  Max: 17451.2206
+  Calculated: 217,137
+  Missing: 63,703
+  Mean: -0.4187
+  Std: 6085.7421
+  Min: -1670405.0000
+  Max: 1684067.0000
 
 driftsrentabilitet:
   Calculated: 268,027
@@ -75,12 +75,12 @@ omsetningsgrad:
   Max: 13417.8152
 
 rentedekningsgrad:
-  Calculated: 196,826
-  Missing: 84,014
-  Mean: 47.9061
-  Std: 667.9060
-  Min: -15497.0000
-  Max: 159129.9283
+  Calculated: 243,400
+  Missing: 37,440
+  Mean: 793.6542
+  Std: 133465.0043
+  Min: -19842398.0000
+  Max: 59320402.0000
 
 altman_z_score:
   Calculated: 215,568
@@ -91,20 +91,20 @@ altman_z_score:
   Max: 13097.1339
 
 omsetningsvekst_1617:
-  Calculated: 182,393
-  Missing: 98,447
-  Mean: 2.7920
-  Std: 292.0254
+  Calculated: 182,477
+  Missing: 98,363
+  Mean: 81.1618
+  Std: 17417.8685
   Min: -13.2556
-  Max: 70591.7590
+  Max: 4278049.0000
 
 omsetningsvekst_1718:
-  Calculated: 182,093
-  Missing: 98,747
-  Mean: 1.8464
-  Std: 88.1465
+  Calculated: 182,201
+  Missing: 98,639
+  Mean: 3.4447
+  Std: 303.1923
   Min: -37.4515
-  Max: 15771.5400
+  Max: 69652.2759
 
 aktivavekst_1617:
   Calculated: 223,479
@@ -188,8 +188,8 @@ antall_år_levert:
 regnskapskomplett:
   Calculated: 280,840
   Missing: 0
-  Mean: 0.3481
-  Std: 0.4764
+  Mean: 0.7492
+  Std: 0.4334
   Min: 0.0000
   Max: 1.0000
 
@@ -262,7 +262,7 @@ sterkt_overbelånt:
   Missing: 0
 
 kan_ikke_dekke_renter:
-  Calculated: 196,826
+  Calculated: 243,400
   Missing: 0
 
 lav_likviditet:

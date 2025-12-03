@@ -81,8 +81,9 @@ print(f"  Bankruptcies: {sector_df['bankrupt'].sum():,}")
 print("\n[2/7] Engineering features...")
 
 # Base economic features
+# Note: Tall 7709 (Annen driftsinntekt) merged into Tall 72 during feature engineering
 raw_accounting = [
-    'Tall 1340', 'Tall 7709', 'Tall 72', 'Tall 146',
+    'Tall 1340', 'Tall 72', 'Tall 146',
     'Tall 217', 'Tall 194', 'Tall 85', 'Tall 86', 'Tall 17130'
 ]
 

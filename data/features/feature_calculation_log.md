@@ -1,11 +1,34 @@
 # Feature Calculation Log - Version 1
-Generated: 2025-12-03 17:05:24.463920
+Generated: 2025-12-03 18:27:25.997584
 
 ## Source Data
 - Input: ..\processed\norwegian_companies_panel.parquet
 - Rows: 280,840
 - Companies: 114,848
 - Years: [np.int64(2016), np.int64(2017), np.int64(2018)]
+
+## Data Pre-Processing
+
+### Tall 7709 Merge (Annen driftsinntekt)
+**Date:** December 3, 2025
+**Rationale:** Tall 7709 (Other Operating Income) had 59.2% missing rate, reducing complete cases from 75% to 36%. Field is legitimately missing for companies without secondary revenue streams.
+
+**Implementation:**
+```python
+# Merge Tall 7709 into Tall 72 (Sum inntekter)
+df_features['Tall 72'] = df_features['Tall 72'].fillna(0) + df_features['Tall 7709'].fillna(0)
+df_features.loc[df['Tall 72'].isna() & df['Tall 7709'].isna(), 'Tall 72'] = np.nan
+```
+
+**Impact:**
+- Tall 72 missing rate: Unchanged at 12.8% (Tall 7709 absorbed when present)
+- Complete cases (Sector C): 12,408 → 25,783 (+107.8% increase)
+- Information preserved: Signal from Tall 7709 retained when present
+- Required features: Reduced from 9 to 8 Tall fields
+
+**Note:** All downstream features using Tall 72 now include Other Operating Income when reported.
+
+---
 
 ## Features Added: 38
 
@@ -49,9 +72,9 @@ Generated: 2025-12-03 17:05:24.463920
 #### driftsmargin
 - **Formula:** `Tall 146 / Tall 1340`
 - **Theory:** Norwegian accounting standards - Driftsresultat / Salgsinntekt
-- **Calculated for:** 216,873 rows
-- **Missing:** 63,967 rows
-- **Mean:** 0.2233
+- **Calculated for:** 217,137 rows
+- **Missing:** 63,703 rows
+- **Mean:** -0.4187
 
 #### driftsrentabilitet
 - **Formula:** `Tall 146 / (Tall 217 + Tall 194)`
@@ -70,9 +93,9 @@ Generated: 2025-12-03 17:05:24.463920
 #### rentedekningsgrad
 - **Formula:** `Tall 146 / Tall 17130`
 - **Theory:** Times Interest Earned ratio
-- **Calculated for:** 196,826 rows
-- **Missing:** 84,014 rows
-- **Mean:** 47.9061
+- **Calculated for:** 243,400 rows
+- **Missing:** 37,440 rows
+- **Mean:** 793.6542
 
 #### altman_z_score
 - **Formula:** `0.717*X1 + 3.107*X3 + 0.420*X4 + 0.998*X5 (simplified)`
@@ -84,18 +107,18 @@ Generated: 2025-12-03 17:05:24.463920
 #### omsetningsvekst_1617
 - **Formula:** `Year-over-year change`
 - **Theory:** Temporal dynamics
-- **Calculated for:** 182,393 rows
-- **Missing:** 98,447 rows
-- **Mean:** 2.7920
+- **Calculated for:** 182,477 rows
+- **Missing:** 98,363 rows
+- **Mean:** 81.1618
 
 ### Temporal Features (10 features)
 
 #### omsetningsvekst_1718
 - **Formula:** `Year-over-year change`
 - **Theory:** Temporal dynamics
-- **Calculated for:** 182,093 rows
-- **Missing:** 98,747 rows
-- **Mean:** 1.8464
+- **Calculated for:** 182,201 rows
+- **Missing:** 98,639 rows
+- **Mean:** 3.4447
 
 #### aktivavekst_1617
 - **Formula:** `Year-over-year change`
@@ -177,11 +200,11 @@ Generated: 2025-12-03 17:05:24.463920
 - **Mean:** 2.4453
 
 #### regnskapskomplett
-- **Formula:** `All 9 Tall fields present (0/1)`
+- **Formula:** `All 8 core Tall fields present (0/1)`
 - **Theory:** Data quality indicator
 - **Calculated for:** 280,840 rows
 - **Missing:** 0 rows
-- **Mean:** 0.3481
+- **Mean:** 0.7492
 
 #### kan_ikke_beregne_likviditet
 - **Formula:** `Missing data for ratio calculation (0/1)`
@@ -265,7 +288,7 @@ Generated: 2025-12-03 17:05:24.463920
 #### kan_ikke_dekke_renter
 - **Formula:** `rentedekningsgrad < 1.0`
 - **Theory:** Interest coverage failure
-- **Calculated for:** 196,826 rows
+- **Calculated for:** 243,400 rows
 - **Missing:** 0 rows
 
 #### lav_likviditet
