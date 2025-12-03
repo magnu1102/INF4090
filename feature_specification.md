@@ -34,23 +34,6 @@ struggle to meet short-term obligations.
 
 ---
 
-#### Quick Ratio (Likviditetsgrad 2 / Syretest)
-**Norwegian name:** `likviditetsgrad_2`
-
-**Formula:** (Current Assets - Inventory) / Short-term Debt
-```
-# Note: We don't have separate inventory data in our dataset
-# We'll use current assets as proxy (conservative estimate)
-likviditetsgrad_2 = Tall 194 / Tall 85
-```
-
-**Theoretical Basis:**
-- More conservative than current ratio
-- Excludes inventory (least liquid current asset)
-- Ohlson (1980): Used in logistic regression bankruptcy model
-
----
-
 ### 1.2 LEVERAGE RATIOS (Gjeldsgrad)
 
 #### Total Debt Ratio (Total Gjeldsgrad)
@@ -143,22 +126,6 @@ driftsmargin = Tall 146 / Tall 72
 
 **Bankruptcy Prediction Relevance:**
 Consistently unprofitable firms cannot sustain operations long-term.
-
----
-
-#### Return on Assets (Totalkapitalrentabilitet)
-**Norwegian name:** `totalkapitalrentabilitet`
-
-**Formula:** Operating Result / Total Assets
-```
-totalkapitalrentabilitet = Tall 146 / (Tall 217 + Tall 194)
-```
-
-**Theoretical Basis:**
-- Altman (1968): Retained earnings to total assets (similar concept)
-- Beaver (1966): Net income to total assets
-- Measures how efficiently assets generate profit
-- Low or negative ROA indicates poor asset utilization
 
 ---
 
@@ -610,7 +577,6 @@ avvik_likviditet_bransje = (likviditetsgrad_1 - industry_median) / industry_medi
 
 **Profitability (3):**
 - driftsmargin
-- totalkapitalrentabilitet
 - omsetningsgrad
 
 **Coverage (1):**

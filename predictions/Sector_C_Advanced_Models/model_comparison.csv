@@ -1,0 +1,5 @@
+Model,Accuracy,Precision,Recall,F1-Score,ROC-AUC,Sensitivity,Specificity,True_Positives,False_Positives,True_Negatives,False_Negatives
+Logistic Regression,0.8889,0.5000,1.0000,0.6667,1.0000,1.0000,0.8750,1,1,7,0
+Random Forest,0.7778,0.3333,1.0000,0.5000,0.7500,1.0000,0.7500,1,2,6,0
+XGBoost,0.7778,0.3333,1.0000,0.5000,0.8750,1.0000,0.7500,1,2,6,0
+Gradient Boosting,0.7778,0.3333,1.0000,0.5000,0.8750,1.0000,0.7500,1,2,6,0
