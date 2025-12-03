@@ -1,5 +1,5 @@
 # Feature Calculation Log - Version 1
-Generated: 2025-12-03 12:15:02.542962
+Generated: 2025-12-03 17:05:24.463920
 
 ## Source Data
 - Input: ..\processed\norwegian_companies_panel.parquet
@@ -14,123 +14,123 @@ Generated: 2025-12-03 12:15:02.542962
 #### likviditetsgrad_1
 - **Formula:** `Tall 194 / Tall 85`
 - **Theory:** Beaver (1966), Altman (1968)
-- **Calculated for:** 263,917 rows
-- **Missing:** 16,923 rows
-- **Mean:** 226.0420
+- **Calculated for:** 261,038 rows
+- **Missing:** 19,802 rows
+- **Mean:** 13.5397
 
 #### total_gjeldsgrad
 - **Formula:** `(Tall 86 + Tall 85) / (Tall 217 + Tall 194)`
 - **Theory:** Altman (1968), Zmijewski (1984)
-- **Calculated for:** 264,202 rows
-- **Missing:** 16,638 rows
-- **Mean:** 750.6455
+- **Calculated for:** 262,500 rows
+- **Missing:** 18,340 rows
+- **Mean:** 2.8672
 
 #### langsiktig_gjeldsgrad
 - **Formula:** `Tall 86 / (Tall 217 + Tall 194)`
 - **Theory:** Leverage analysis
-- **Calculated for:** 271,285 rows
-- **Missing:** 9,555 rows
-- **Mean:** 509.2214
+- **Calculated for:** 269,349 rows
+- **Missing:** 11,491 rows
+- **Mean:** 1.3942
 
 #### kortsiktig_gjeldsgrad
 - **Formula:** `Tall 85 / (Tall 217 + Tall 194)`
 - **Theory:** Short-term liquidity pressure
-- **Calculated for:** 264,230 rows
-- **Missing:** 16,610 rows
-- **Mean:** 256.9473
+- **Calculated for:** 262,528 rows
+- **Missing:** 18,312 rows
+- **Mean:** 1.7095
 
 #### egenkapitalandel
 - **Formula:** `1 - total_gjeldsgrad`
 - **Theory:** Norwegian accounting standards
-- **Calculated for:** 264,202 rows
-- **Missing:** 16,638 rows
-- **Mean:** -749.6455
+- **Calculated for:** 262,500 rows
+- **Missing:** 18,340 rows
+- **Mean:** -1.8672
 
 #### driftsmargin
 - **Formula:** `Tall 146 / Tall 1340`
 - **Theory:** Norwegian accounting standards - Driftsresultat / Salgsinntekt
-- **Calculated for:** 217,567 rows
-- **Missing:** 63,273 rows
-- **Mean:** 7.3217
+- **Calculated for:** 216,873 rows
+- **Missing:** 63,967 rows
+- **Mean:** 0.2233
 
 #### driftsrentabilitet
 - **Formula:** `Tall 146 / (Tall 217 + Tall 194)`
 - **Theory:** Operating ROA - Altman (1968), Beaver (1966)
-- **Calculated for:** 269,865 rows
-- **Missing:** 10,975 rows
-- **Mean:** -16.7187
+- **Calculated for:** 268,027 rows
+- **Missing:** 12,813 rows
+- **Mean:** -0.1986
 
 #### omsetningsgrad
 - **Formula:** `Tall 1340 / (Tall 217 + Tall 194)`
 - **Theory:** Asset efficiency
-- **Calculated for:** 219,422 rows
-- **Missing:** 61,418 rows
-- **Mean:** 13.1777
+- **Calculated for:** 218,666 rows
+- **Missing:** 62,174 rows
+- **Mean:** 3.2175
 
 #### rentedekningsgrad
 - **Formula:** `Tall 146 / Tall 17130`
 - **Theory:** Times Interest Earned ratio
-- **Calculated for:** 245,622 rows
-- **Missing:** 35,218 rows
-- **Mean:** 771.0529
+- **Calculated for:** 196,826 rows
+- **Missing:** 84,014 rows
+- **Mean:** 47.9061
 
 #### altman_z_score
 - **Formula:** `0.717*X1 + 3.107*X3 + 0.420*X4 + 0.998*X5 (simplified)`
 - **Theory:** Altman (1968, revised 1983)
-- **Calculated for:** 217,220 rows
-- **Missing:** 63,620 rows
-- **Mean:** -22.6033
+- **Calculated for:** 215,568 rows
+- **Missing:** 65,272 rows
+- **Mean:** 4.0134
 
 #### omsetningsvekst_1617
 - **Formula:** `Year-over-year change`
 - **Theory:** Temporal dynamics
-- **Calculated for:** 182,599 rows
-- **Missing:** 98,241 rows
-- **Mean:** 80.9658
+- **Calculated for:** 182,393 rows
+- **Missing:** 98,447 rows
+- **Mean:** 2.7920
 
 ### Temporal Features (10 features)
 
 #### omsetningsvekst_1718
 - **Formula:** `Year-over-year change`
 - **Theory:** Temporal dynamics
-- **Calculated for:** 182,329 rows
-- **Missing:** 98,511 rows
-- **Mean:** 3.1732
+- **Calculated for:** 182,093 rows
+- **Missing:** 98,747 rows
+- **Mean:** 1.8464
 
 #### aktivavekst_1617
 - **Formula:** `Year-over-year change`
 - **Theory:** Temporal dynamics
-- **Calculated for:** 224,369 rows
-- **Missing:** 56,471 rows
-- **Mean:** 32.1228
+- **Calculated for:** 223,479 rows
+- **Missing:** 57,361 rows
+- **Mean:** 1.3161
 
 #### aktivavekst_1718
 - **Formula:** `Year-over-year change`
 - **Theory:** Temporal dynamics
-- **Calculated for:** 224,190 rows
-- **Missing:** 56,650 rows
-- **Mean:** 658.6408
+- **Calculated for:** 223,332 rows
+- **Missing:** 57,508 rows
+- **Mean:** 2.7018
 
 #### gjeldsvekst_1617
 - **Formula:** `Year-over-year change`
 - **Theory:** Temporal dynamics
-- **Calculated for:** 219,152 rows
-- **Missing:** 61,688 rows
-- **Mean:** 6.3695
+- **Calculated for:** 218,305 rows
+- **Missing:** 62,535 rows
+- **Mean:** 4.0022
 
 #### gjeldsvekst_1718
 - **Formula:** `Year-over-year change`
 - **Theory:** Temporal dynamics
-- **Calculated for:** 218,982 rows
-- **Missing:** 61,858 rows
-- **Mean:** 56.8854
+- **Calculated for:** 218,166 rows
+- **Missing:** 62,674 rows
+- **Mean:** 3.4399
 
 #### fallende_likviditet
 - **Formula:** `3-year trend indicator (0/1)`
 - **Theory:** Consistent deterioration signal
 - **Calculated for:** 276,685 rows
 - **Missing:** 4,155 rows
-- **Mean:** 0.1547
+- **Mean:** 0.1524
 
 #### konsistent_underskudd
 - **Formula:** `3-year trend indicator (0/1)`
@@ -144,7 +144,7 @@ Generated: 2025-12-03 12:15:02.542962
 - **Theory:** Consistent deterioration signal
 - **Calculated for:** 276,685 rows
 - **Missing:** 4,155 rows
-- **Mean:** 0.1613
+- **Mean:** 0.1583
 
 #### omsetningsvolatilitet
 - **Formula:** `std(revenues) / mean(revenues)`
@@ -251,13 +251,13 @@ Generated: 2025-12-03 12:15:02.542962
 #### negativ_egenkapital
 - **Formula:** `egenkapitalandel < 0`
 - **Theory:** Technical insolvency
-- **Calculated for:** 264,202 rows
+- **Calculated for:** 262,500 rows
 - **Missing:** 0 rows
 
 #### sterkt_overbelånt
 - **Formula:** `total_gjeldsgrad > 0.8`
 - **Theory:** High leverage warning
-- **Calculated for:** 264,202 rows
+- **Calculated for:** 262,500 rows
 - **Missing:** 0 rows
 
 ### Warning Signals (3 features)
@@ -265,13 +265,13 @@ Generated: 2025-12-03 12:15:02.542962
 #### kan_ikke_dekke_renter
 - **Formula:** `rentedekningsgrad < 1.0`
 - **Theory:** Interest coverage failure
-- **Calculated for:** 245,622 rows
+- **Calculated for:** 196,826 rows
 - **Missing:** 0 rows
 
 #### lav_likviditet
 - **Formula:** `likviditetsgrad_1 < 1.0`
 - **Theory:** Liquidity crisis
-- **Calculated for:** 263,917 rows
+- **Calculated for:** 261,038 rows
 - **Missing:** 0 rows
 
 #### driftsunderskudd

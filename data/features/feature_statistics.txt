@@ -1,7 +1,7 @@
 ================================================================================
 FEATURE STATISTICS REPORT
 ================================================================================
-Generated: 2025-12-03 12:15:02.556227
+Generated: 2025-12-03 17:05:24.477118
 
 Dataset: feature_dataset_v1.parquet
 Total rows: 280,840
@@ -11,137 +11,137 @@ Years: [np.int64(2016), np.int64(2017), np.int64(2018)]
 Features added: 38
 
 likviditetsgrad_1:
-  Calculated: 263,917
-  Missing: 16,923
-  Mean: 226.0420
-  Std: 32570.0275
-  Min: -3578402.0000
-  Max: 10450944.0000
+  Calculated: 261,038
+  Missing: 19,802
+  Mean: 13.5397
+  Std: 295.2222
+  Min: -406.1351
+  Max: 64516.7272
 
 total_gjeldsgrad:
-  Calculated: 264,202
-  Missing: 16,638
-  Mean: 750.6455
-  Std: 142804.6662
-  Min: -2186413.6000
-  Max: 68963100.0000
+  Calculated: 262,500
+  Missing: 18,340
+  Mean: 2.8672
+  Std: 134.4585
+  Min: -88.9286
+  Max: 53838.6000
 
 langsiktig_gjeldsgrad:
-  Calculated: 271,285
-  Missing: 9,555
-  Mean: 509.2214
-  Std: 137319.4762
-  Min: -1432118.4000
-  Max: 68871650.0000
+  Calculated: 269,349
+  Missing: 11,491
+  Mean: 1.3942
+  Std: 104.9073
+  Min: -37.0470
+  Max: 40650.8000
 
 kortsiktig_gjeldsgrad:
-  Calculated: 264,230
-  Missing: 16,610
-  Mean: 256.9473
-  Std: 25252.2709
-  Min: -754295.2000
-  Max: 5750863.0000
+  Calculated: 262,528
+  Missing: 18,312
+  Mean: 1.7095
+  Std: 56.8405
+  Min: -187.0086
+  Max: 14827.9292
 
 egenkapitalandel:
-  Calculated: 264,202
-  Missing: 16,638
-  Mean: -749.6455
-  Std: 142804.6662
-  Min: -68963099.0000
-  Max: 2186414.6000
+  Calculated: 262,500
+  Missing: 18,340
+  Mean: -1.8672
+  Std: 134.4585
+  Min: -53837.6000
+  Max: 89.9286
 
 driftsmargin:
-  Calculated: 217,567
-  Missing: 63,273
-  Mean: 7.3217
-  Std: 6917.7661
-  Min: -1670405.0000
-  Max: 1684067.0000
+  Calculated: 216,873
+  Missing: 63,967
+  Mean: 0.2233
+  Std: 68.2092
+  Min: -3547.8945
+  Max: 17451.2206
 
 driftsrentabilitet:
-  Calculated: 269,865
-  Missing: 10,975
-  Mean: -16.7187
-  Std: 2740.4076
-  Min: -899860.6667
-  Max: 383825.0000
+  Calculated: 268,027
+  Missing: 12,813
+  Mean: -0.1986
+  Std: 9.3772
+  Min: -2075.0914
+  Max: 895.0640
 
 omsetningsgrad:
-  Calculated: 219,422
-  Missing: 61,418
-  Mean: 13.1777
-  Std: 1561.4864
-  Min: -32901.0000
-  Max: 583840.0000
+  Calculated: 218,666
+  Missing: 62,174
+  Mean: 3.2175
+  Std: 32.7232
+  Min: -67.3174
+  Max: 13417.8152
 
 rentedekningsgrad:
-  Calculated: 245,622
-  Missing: 35,218
-  Mean: 771.0529
-  Std: 132895.8007
-  Min: -19842398.0000
-  Max: 59320402.0000
+  Calculated: 196,826
+  Missing: 84,014
+  Mean: 47.9061
+  Std: 667.9060
+  Min: -15497.0000
+  Max: 159129.9283
 
 altman_z_score:
-  Calculated: 217,220
-  Missing: 63,620
-  Mean: -22.6033
-  Std: 10398.1696
-  Min: -3596197.0123
-  Max: 1492276.5030
+  Calculated: 215,568
+  Missing: 65,272
+  Mean: 4.0134
+  Std: 61.2256
+  Min: -5231.5835
+  Max: 13097.1339
 
 omsetningsvekst_1617:
-  Calculated: 182,599
-  Missing: 98,241
-  Mean: 80.9658
-  Std: 17412.0752
-  Min: -7351.0000
-  Max: 4278049.0000
+  Calculated: 182,393
+  Missing: 98,447
+  Mean: 2.7920
+  Std: 292.0254
+  Min: -13.2556
+  Max: 70591.7590
 
 omsetningsvekst_1718:
-  Calculated: 182,329
-  Missing: 98,511
-  Mean: 3.1732
-  Std: 308.5758
-  Min: -16772.6368
-  Max: 69652.2759
+  Calculated: 182,093
+  Missing: 98,747
+  Mean: 1.8464
+  Std: 88.1465
+  Min: -37.4515
+  Max: 15771.5400
 
 aktivavekst_1617:
-  Calculated: 224,369
-  Missing: 56,471
-  Mean: 32.1228
-  Std: 5335.6042
-  Min: -1053.3551
-  Max: 1238999.0000
+  Calculated: 223,479
+  Missing: 57,361
+  Mean: 1.3161
+  Std: 145.2818
+  Min: -6.2139
+  Max: 38626.8987
 
 aktivavekst_1718:
-  Calculated: 224,190
-  Missing: 56,650
-  Mean: 658.6408
-  Std: 138846.3869
-  Min: -12267.2174
-  Max: 31999999.0000
+  Calculated: 223,332
+  Missing: 57,508
+  Mean: 2.7018
+  Std: 210.6771
+  Min: -46.7422
+  Max: 49326.7792
 
 gjeldsvekst_1617:
-  Calculated: 219,152
-  Missing: 61,688
-  Mean: 6.3695
-  Std: 949.3096
-  Min: -119477.6119
-  Max: 190846.1875
+  Calculated: 218,305
+  Missing: 62,535
+  Mean: 4.0022
+  Std: 381.1628
+  Min: -118.1723
+  Max: 98460.6341
 
 gjeldsvekst_1718:
-  Calculated: 218,982
-  Missing: 61,858
-  Mean: 56.8854
-  Std: 7524.5032
-  Min: -5884.1240
-  Max: 2059022.6667
+  Calculated: 218,166
+  Missing: 62,674
+  Mean: 3.4399
+  Std: 152.9449
+  Min: -156.1929
+  Max: 35247.6585
 
 fallende_likviditet:
   Calculated: 276,685
   Missing: 4,155
-  Mean: 0.1547
+  Mean: 0.1524
 
 konsistent_underskudd:
   Calculated: 276,685
@@ -151,7 +151,7 @@ konsistent_underskudd:
 økende_gjeldsgrad:
   Calculated: 276,685
   Missing: 4,155
-  Mean: 0.1613
+  Mean: 0.1583
 
 omsetningsvolatilitet:
   Calculated: 203,601
@@ -254,19 +254,19 @@ byttet_revisor_noensinne:
   Mean: 0.1109
 
 negativ_egenkapital:
-  Calculated: 264,202
+  Calculated: 262,500
   Missing: 0
 
 sterkt_overbelånt:
-  Calculated: 264,202
+  Calculated: 262,500
   Missing: 0
 
 kan_ikke_dekke_renter:
-  Calculated: 245,622
+  Calculated: 196,826
   Missing: 0
 
 lav_likviditet:
-  Calculated: 263,917
+  Calculated: 261,038
   Missing: 0
 
 driftsunderskudd:

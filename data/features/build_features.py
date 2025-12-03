@@ -74,11 +74,43 @@ def log_feature(name, formula, theory, calculated_count, missing_count, stats):
 print("\n[2/6] Calculating Financial Ratios...")
 print("  Theoretical basis: Beaver (1966), Altman (1968), Ohlson (1980)")
 
-# Helper function to safely divide (avoid division by zero)
-def safe_divide(numerator, denominator):
-    """Divide but return NaN if denominator is 0 or NaN"""
-    result = numerator / denominator
-    result = result.replace([np.inf, -np.inf], np.nan)
+# Helper function to safely divide (avoid division by zero and extreme ratios)
+def safe_divide(numerator, denominator, min_denominator=1000):
+    """
+    Divide but return NaN if denominator is too small, zero, negative, or invalid.
+
+    Prevents extreme ratio values caused by near-zero or negative denominators.
+    Companies with denominators below min_denominator are economically insignificant
+    edge cases (dormant companies, data errors).
+
+    Args:
+        numerator: Numerator value (can be negative, zero, or positive)
+        denominator: Denominator value
+        min_denominator: Minimum absolute value for valid division (default: 1000 NOK)
+                        Values below this are economically insignificant
+
+    Returns:
+        Ratio or NaN if denominator is invalid
+
+    Examples:
+        >>> safe_divide(1000, 500)     # Returns 2.0
+        >>> safe_divide(1000, 1)       # Returns NaN (below threshold)
+        >>> safe_divide(1000, -500)    # Returns NaN (negative denominator)
+        >>> safe_divide(1000, 0)       # Returns NaN (zero)
+    """
+    # Convert to absolute for threshold check
+    abs_denom = np.abs(denominator)
+
+    # Return NaN if denominator is NaN, zero, negative, or below threshold
+    result = np.where(
+        (pd.isna(denominator)) | (denominator == 0) | (denominator <= 0) | (abs_denom < min_denominator),
+        np.nan,
+        numerator / denominator
+    )
+
+    # Replace any remaining inf values (safety check)
+    result = pd.Series(result).replace([np.inf, -np.inf], np.nan)
+
     return result
 
 # 1.1 LIQUIDITY RATIOS
@@ -213,7 +245,65 @@ log_feature('altman_z_score', '0.717*X1 + 3.107*X3 + 0.420*X4 + 0.998*X5 (simpli
             'Altman (1968, revised 1983)', calc_count, miss_count, stats)
 print(f"    altman_z_score: {calc_count:,} calculated, {miss_count:,} missing")
 
-print(f"\n  Financial Ratios: 11 features calculated")
+# ============================================================================
+# WINSORIZATION: Cap extreme ratios at 99th percentile
+# ============================================================================
+print("\n  [1.6] Winsorizing extreme ratios (capping at 99th percentile)...")
+
+ratios_to_winsorize = {
+    'likviditetsgrad_1': (0, None),  # Cap upper only
+    'total_gjeldsgrad': (None, None),  # Cap both
+    'langsiktig_gjeldsgrad': (None, None),
+    'kortsiktig_gjeldsgrad': (None, None),
+    'egenkapitalandel': (None, 2),  # Cap upper at 2 (200%)
+    'driftsmargin': (None, None),
+    'driftsrentabilitet': (None, None),
+    'omsetningsgrad': (0, None),  # Cap upper only
+    'rentedekningsgrad': (None, None),
+    'altman_z_score': (None, None)
+}
+
+winsorization_log = []
+
+for ratio_name, (hard_lower, hard_upper) in ratios_to_winsorize.items():
+    if ratio_name not in df_features.columns:
+        continue
+
+    # Get non-null values for percentile calculation
+    ratio_values = df_features[ratio_name].dropna()
+
+    if len(ratio_values) == 0:
+        continue
+
+    # Calculate percentile bounds
+    lower_bound = ratio_values.quantile(0.01) if hard_lower is None else hard_lower
+    upper_bound = ratio_values.quantile(0.99) if hard_upper is None else hard_upper
+
+    # Count how many will be capped
+    too_low = (ratio_values < lower_bound).sum()
+    too_high = (ratio_values > upper_bound).sum()
+
+    # Apply winsorization
+    df_features[ratio_name] = df_features[ratio_name].clip(lower=lower_bound, upper=upper_bound)
+
+    winsorization_log.append({
+        'ratio': ratio_name,
+        'lower_bound': lower_bound,
+        'upper_bound': upper_bound,
+        'capped_low': too_low,
+        'capped_high': too_high
+    })
+
+    print(f"    {ratio_name}: capped {too_low:,} low, {too_high:,} high")
+    print(f"      Bounds: [{lower_bound:.2f}, {upper_bound:.2f}]")
+
+print(f"\n  Financial Ratios: 11 features calculated, 10 winsorized")
+
+# Save winsorization log for documentation
+winsorization_df = pd.DataFrame(winsorization_log)
+winsorization_file = Path('winsorization_log.csv')
+winsorization_df.to_csv(winsorization_file, index=False)
+print(f"  Winsorization log saved: {winsorization_file}")
 
 # ============================================================================
 # CATEGORY 2: TEMPORAL FEATURES (10 features)
