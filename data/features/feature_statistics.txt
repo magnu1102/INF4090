@@ -1,24 +1,16 @@
 ================================================================================
 FEATURE STATISTICS REPORT
 ================================================================================
-Generated: 2025-11-30 18:51:55.678092
+Generated: 2025-12-03 12:15:02.556227
 
 Dataset: feature_dataset_v1.parquet
 Total rows: 280,840
 Total companies: 114,848
 Years: [np.int64(2016), np.int64(2017), np.int64(2018)]
 
-Features added: 39
+Features added: 38
 
 likviditetsgrad_1:
-  Calculated: 263,917
-  Missing: 16,923
-  Mean: 226.0420
-  Std: 32570.0275
-  Min: -3578402.0000
-  Max: 10450944.0000
-
-likviditetsgrad_2:
   Calculated: 263,917
   Missing: 16,923
   Mean: 226.0420
@@ -59,14 +51,14 @@ egenkapitalandel:
   Max: 2186414.6000
 
 driftsmargin:
-  Calculated: 232,407
-  Missing: 48,433
-  Mean: -15.2778
-  Std: 4413.1311
+  Calculated: 217,567
+  Missing: 63,273
+  Mean: 7.3217
+  Std: 6917.7661
   Min: -1670405.0000
-  Max: 160969.0000
+  Max: 1684067.0000
 
-totalkapitalrentabilitet:
+driftsrentabilitet:
   Calculated: 269,865
   Missing: 10,975
   Mean: -16.7187

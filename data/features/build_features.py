@@ -93,11 +93,11 @@ log_feature('likviditetsgrad_1', 'Tall 194 / Tall 85',
             'Beaver (1966), Altman (1968)', calc_count, miss_count, stats)
 print(f"    likviditetsgrad_1: {calc_count:,} calculated, {miss_count:,} missing")
 
-# Quick Ratio (Likviditetsgrad 2) - same as current ratio since we don't have inventory
-df_features['likviditetsgrad_2'] = df_features['likviditetsgrad_1'].copy()
-log_feature('likviditetsgrad_2', 'Tall 194 / Tall 85 (no inventory data)',
-            'Ohlson (1980)', calc_count, miss_count, stats)
-print(f"    likviditetsgrad_2: {calc_count:,} calculated (same as likviditetsgrad_1)")
+# Quick Ratio (Likviditetsgrad 2) - REMOVED
+# Was identical to likviditetsgrad_1 due to missing inventory (varelager) data
+# Standard formula: (Omløpsmidler - Varelager) / Kortsiktig gjeld
+# Removed to avoid redundancy and multicollinearity
+print(f"    likviditetsgrad_2: REMOVED (was redundant - no inventory data available)")
 
 # 1.2 LEVERAGE RATIOS
 print("\n  [1.2] Leverage Ratios...")
@@ -146,22 +146,28 @@ print(f"    egenkapitalandel: {calc_count:,} calculated, {miss_count:,} missing"
 print("\n  [1.3] Profitability Ratios...")
 
 # Operating Margin (Driftsmargin)
-df_features['driftsmargin'] = safe_divide(df['Tall 146'], df['Tall 72'])
+# CORRECTED: Use Salgsinntekt (Tall 1340) instead of Sum inntekter (Tall 72)
+# per Norwegian accounting standards
+df_features['driftsmargin'] = safe_divide(df['Tall 146'], df['Tall 1340'])
 calc_count = df_features['driftsmargin'].notna().sum()
 miss_count = df_features['driftsmargin'].isna().sum()
 stats = df_features['driftsmargin'].describe().to_dict()
-log_feature('driftsmargin', 'Tall 146 / Tall 72',
-            'Taffler (1983)', calc_count, miss_count, stats)
+log_feature('driftsmargin', 'Tall 146 / Tall 1340',
+            'Norwegian accounting standards - Driftsresultat / Salgsinntekt', calc_count, miss_count, stats)
 print(f"    driftsmargin: {calc_count:,} calculated, {miss_count:,} missing")
 
-# Return on Assets (Totalkapitalrentabilitet)
-df_features['totalkapitalrentabilitet'] = safe_divide(df['Tall 146'], df_features['_total_assets'])
-calc_count = df_features['totalkapitalrentabilitet'].notna().sum()
-miss_count = df_features['totalkapitalrentabilitet'].isna().sum()
-stats = df_features['totalkapitalrentabilitet'].describe().to_dict()
-log_feature('totalkapitalrentabilitet', 'Tall 146 / (Tall 217 + Tall 194)',
-            'Altman (1968), Beaver (1966)', calc_count, miss_count, stats)
-print(f"    totalkapitalrentabilitet: {calc_count:,} calculated, {miss_count:,} missing")
+# Operating Return on Assets (Driftsrentabilitet)
+# RENAMED: Previously called 'totalkapitalrentabilitet' but uses Driftsresultat (operating income)
+# rather than Årsresultat (net income) due to data limitations.
+# Standard totalkapitalrentabilitet = (Årsresultat + Finanskostnader) / Totalkapital
+# This calculates: Driftsresultat / Totalkapital = Operating ROA
+df_features['driftsrentabilitet'] = safe_divide(df['Tall 146'], df_features['_total_assets'])
+calc_count = df_features['driftsrentabilitet'].notna().sum()
+miss_count = df_features['driftsrentabilitet'].isna().sum()
+stats = df_features['driftsrentabilitet'].describe().to_dict()
+log_feature('driftsrentabilitet', 'Tall 146 / (Tall 217 + Tall 194)',
+            'Operating ROA - Altman (1968), Beaver (1966)', calc_count, miss_count, stats)
+print(f"    driftsrentabilitet: {calc_count:,} calculated, {miss_count:,} missing")
 
 # Asset Turnover (Omsetningsgrad)
 df_features['omsetningsgrad'] = safe_divide(df['Tall 1340'], df_features['_total_assets'])

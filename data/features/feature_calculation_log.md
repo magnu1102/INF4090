@@ -1,5 +1,5 @@
 # Feature Calculation Log - Version 1
-Generated: 2025-11-30 18:51:55.667094
+Generated: 2025-12-03 12:15:02.542962
 
 ## Source Data
 - Input: ..\processed\norwegian_companies_panel.parquet
@@ -7,20 +7,13 @@ Generated: 2025-11-30 18:51:55.667094
 - Companies: 114,848
 - Years: [np.int64(2016), np.int64(2017), np.int64(2018)]
 
-## Features Added: 39
+## Features Added: 38
 
 ### Financial Ratios (11 features)
 
 #### likviditetsgrad_1
 - **Formula:** `Tall 194 / Tall 85`
 - **Theory:** Beaver (1966), Altman (1968)
-- **Calculated for:** 263,917 rows
-- **Missing:** 16,923 rows
-- **Mean:** 226.0420
-
-#### likviditetsgrad_2
-- **Formula:** `Tall 194 / Tall 85 (no inventory data)`
-- **Theory:** Ohlson (1980)
 - **Calculated for:** 263,917 rows
 - **Missing:** 16,923 rows
 - **Mean:** 226.0420
@@ -54,15 +47,15 @@ Generated: 2025-11-30 18:51:55.667094
 - **Mean:** -749.6455
 
 #### driftsmargin
-- **Formula:** `Tall 146 / Tall 72`
-- **Theory:** Taffler (1983)
-- **Calculated for:** 232,407 rows
-- **Missing:** 48,433 rows
-- **Mean:** -15.2778
+- **Formula:** `Tall 146 / Tall 1340`
+- **Theory:** Norwegian accounting standards - Driftsresultat / Salgsinntekt
+- **Calculated for:** 217,567 rows
+- **Missing:** 63,273 rows
+- **Mean:** 7.3217
 
-#### totalkapitalrentabilitet
+#### driftsrentabilitet
 - **Formula:** `Tall 146 / (Tall 217 + Tall 194)`
-- **Theory:** Altman (1968), Beaver (1966)
+- **Theory:** Operating ROA - Altman (1968), Beaver (1966)
 - **Calculated for:** 269,865 rows
 - **Missing:** 10,975 rows
 - **Mean:** -16.7187
@@ -88,14 +81,14 @@ Generated: 2025-11-30 18:51:55.667094
 - **Missing:** 63,620 rows
 - **Mean:** -22.6033
 
-### Temporal Features (10 features)
-
 #### omsetningsvekst_1617
 - **Formula:** `Year-over-year change`
 - **Theory:** Temporal dynamics
 - **Calculated for:** 182,599 rows
 - **Missing:** 98,241 rows
 - **Mean:** 80.9658
+
+### Temporal Features (10 features)
 
 #### omsetningsvekst_1718
 - **Formula:** `Year-over-year change`
@@ -160,14 +153,14 @@ Generated: 2025-11-30 18:51:55.667094
 - **Missing:** 77,239 rows
 - **Mean:** inf
 
-### Missingness Features (7 features)
-
 #### levert_alle_år
 - **Formula:** `Filing pattern indicator`
 - **Theory:** Non-filing as bankruptcy predictor
 - **Calculated for:** 280,840 rows
 - **Missing:** 0 rows
 - **Mean:** 0.5861
+
+### Missingness Features (7 features)
 
 #### levert_2018
 - **Formula:** `Filing pattern indicator`
@@ -211,14 +204,14 @@ Generated: 2025-11-30 18:51:55.667094
 - **Missing:** 6,756 rows
 - **Mean:** 11.4651
 
-### Company Characteristics (7 features)
-
 #### nytt_selskap
 - **Formula:** `selskapsalder <= 5`
 - **Theory:** Young company risk
 - **Calculated for:** 274,084 rows
 - **Missing:** 6,756 rows
 - **Mean:** 0.4249
+
+### Company Characteristics (7 features)
 
 #### log_totalkapital
 - **Formula:** `log(Tall 217 + Tall 194 + 1)`
@@ -261,13 +254,13 @@ Generated: 2025-11-30 18:51:55.667094
 - **Calculated for:** 264,202 rows
 - **Missing:** 0 rows
 
-### Warning Signals (4 features)
-
 #### sterkt_overbelånt
 - **Formula:** `total_gjeldsgrad > 0.8`
 - **Theory:** High leverage warning
 - **Calculated for:** 264,202 rows
 - **Missing:** 0 rows
+
+### Warning Signals (3 features)
 
 #### kan_ikke_dekke_renter
 - **Formula:** `rentedekningsgrad < 1.0`
