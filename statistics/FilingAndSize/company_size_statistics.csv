@@ -1,0 +1,6 @@
+size_category,Companies,Bankruptcies,Bankruptcy_Rate,Avg_Employees,Median_Employees,Min_Employees,Max_Employees,Percentage
+Small (1-20),28988,1188,0.04,10.0,9.0,5.0,20.0,25.24
+Medium (21-100),8688,214,0.02,38.19,32.0,21.0,100.0,7.56
+Large (100+),1286,19,0.01,378.15,180.0,101.0,9298.0,1.12
+Zero employees,46452,3379,0.07,0.0,0.0,0.0,0.0,40.45
+Unknown,29434,1392,0.05,,,,,25.63
