@@ -26,30 +26,30 @@ The model achieves AUC 0.84 on 2018 holdout data using only economic features. T
 
 | Rank | Feature | Importance | Type |
 |------|---------|------------|------|
-| 1 | **egenkapitalandel** (Equity ratio) | 0.1163 | Base ratio |
-| 2 | **total_gjeldsgrad** (Total debt ratio) | 0.1108 | Base ratio |
-| 3 | **debt_liquidity_stress** | 0.0623 | **Interaction** |
-| 4 | Tall 194 (Current assets) | 0.0615 | Raw accounting |
-| 5 | Tall 146 (Operating result) | 0.0521 | Raw accounting |
-| 6 | Tall 7709 (Other income) | 0.0431 | Raw accounting |
-| 7 | Tall 1340 (Sales revenue) | 0.0428 | Raw accounting |
-| 8 | **rentedekningsgrad** (Interest coverage) | 0.0409 | Base ratio |
-| 9 | Tall 72 (Total income) | 0.0383 | Raw accounting |
-| 10 | Tall 217 (Fixed assets) | 0.0382 | Raw accounting |
-| 11 | **likviditetsgrad_1** (Current ratio) | 0.0347 | Base ratio |
-| 12 | **size_leverage_interaction** | 0.0339 | **Interaction** |
-| 13 | **profitability_leverage** | 0.0325 | **Interaction** |
-| 14 | **efficiency_profitability** | 0.0322 | **Interaction** |
-| 15 | **omsetningsgrad** (Asset turnover) | 0.0296 | Base ratio |
+| 1 | **egenkapitalandel** | 0.1163 | Nøkkeltall |
+| 2 | **total_gjeldsgrad** | 0.1108 | Nøkkeltall |
+| 3 | **debt_liquidity_stress** | 0.0623 | **Interaksjon** |
+| 4 | Tall 194 (Omløpsmidler) | 0.0615 | Regnskapstall |
+| 5 | Tall 146 (Driftsresultat) | 0.0521 | Regnskapstall |
+| 6 | Tall 7709 (Annen driftsinntekt) | 0.0431 | Regnskapstall |
+| 7 | Tall 1340 (Salgsinntekt) | 0.0428 | Regnskapstall |
+| 8 | **rentedekningsgrad** | 0.0409 | Nøkkeltall |
+| 9 | Tall 72 (Sum inntekter) | 0.0383 | Regnskapstall |
+| 10 | Tall 217 (Anleggsmidler) | 0.0382 | Regnskapstall |
+| 11 | **likviditetsgrad_1** | 0.0347 | Nøkkeltall |
+| 12 | **size_leverage_interaction** | 0.0339 | **Interaksjon** |
+| 13 | **profitability_leverage** | 0.0325 | **Interaksjon** |
+| 14 | **efficiency_profitability** | 0.0322 | **Interaksjon** |
+| 15 | **omsetningsgrad** | 0.0296 | Nøkkeltall |
 
 ###
 
  Key Findings:
 
-1. **Leverage matters most**: Equity ratio and debt ratio are #1 and #2 predictors
-2. **Interactions add value**: `debt_liquidity_stress` (#3) beats all individual ratios except top 2
-3. **Balance sheet scale**: Raw NOK amounts (assets, revenue, profit) are important alongside ratios
-4. **Multiple dimensions**: Leverage (top), profitability (middle), efficiency (lower) all contribute
+1. **Kapitalstruktur viktigst**: Egenkapitalandel og gjeldsgrad er #1 og #2 prediktorer
+2. **Interaksjoner gir verdi**: `debt_liquidity_stress` (#3) slår alle enkeltratios utenom topp 2
+3. **Balanseomfang**: Absolutte NOK-beløp (eiendeler, omsetning, resultat) er viktige ved siden av ratios
+4. **Multiple dimensjoner**: Belåning (topp), lønnsomhet (midten), effektivitet (lavere) bidrar alle
 
 **What this means:**
 Manufacturing bankruptcy is predicted by COMBINATIONS of factors. High debt alone isn't fatal; high debt + low liquidity + low equity creates a "death spiral" the model detects through interactions.
@@ -75,8 +75,8 @@ The model successfully concentrates bankruptcy risk:
 
 **Economic Profiles by Risk Tier:**
 
-| Risk Tier | Avg Debt | Avg Liquidity | Avg Margin | Avg Equity | Altman Z |
-|-----------|----------|---------------|------------|------------|----------|
+| Risk Tier | Gjeldsgrad | Likviditetsgrad | Driftsmargin | Egenkapitalandel | Altman Z |
+|-----------|----------|------------------|--------------|------------------|----------|
 | **Very Low** | 0.50 | 3.46 | -14% | 0.50 | 3.45 |
 | Low | 1.30 | 6.65 | -819%* | -0.30 | 2.47 |
 | Medium | 0.95 | 7.12 | 76289%* | 0.05 | 2.61 |
@@ -85,17 +85,17 @@ The model successfully concentrates bankruptcy risk:
 
 *Extreme values likely data outliers in that tier
 
-**Key Economic Characteristics of High-Risk Manufacturing:**
-- **Debt ratio ~1.0**: Debt equals or exceeds assets
-- **Liquidity <1.5**: Cannot cover short-term obligations
-- **Negative margins**: Operating losses
-- **Negative equity**: Technically insolvent
+**Økonomiske kjennetegn ved høyrisiko industri:**
+- **Gjeldsgrad ~1.0**: Gjeld tilsvarer eller overstiger eiendeler
+- **Likviditetsgrad <1.5**: Kan ikke dekke kortsiktige forpliktelser
+- **Negativ margin**: Driftsunderskudd
+- **Negativ egenkapital**: Teknisk insolvent
 
-**Characteristics of Low-Risk Manufacturing:**
-- **Debt ratio 0.5**: Moderate leverage
-- **Liquidity >3**: Strong cash position
-- **Positive equity 0.5**: Solid capital base
-- **Altman Z >3**: "Safe" zone
+**Kjennetegn ved lavrisiko industri:**
+- **Gjeldsgrad 0.5**: Moderat belåning
+- **Likviditetsgrad >3**: Sterk likviditetsposisjon
+- **Positiv egenkapital 0.5**: Solid kapitalbase
+- **Altman Z >3**: "Trygg" sone
 
 ---
 
@@ -103,11 +103,11 @@ The model successfully concentrates bankruptcy risk:
 
 Clustered companies by economic profile (PCA + K-Means K=3), then analyzed bankruptcy predictors within each regime:
 
-| Regime | Size | Bankruptcies | Avg Fixed Assets | Avg Debt | Profile |
-|--------|------|--------------|------------------|----------|---------|
-| **Regime 0** | 12,493 (99.6%) | 2.11% | 29M NOK | 0.99 | **Mainstream manufacturing** |
-| **Regime 1** | 1 (0.01%) | 0% | 0 NOK | 52,386* | Data error (extreme outlier) |
-| **Regime 2** | 45 (0.4%) | 0% | 9.7B NOK | 0.63 | **Mega-corporations** |
+| Regime | Størrelse | Konkurser | Gj.snitt anleggsmidler | Gj.snitt gjeldsgrad | Profil |
+|--------|------|--------------|----------------------|----------|---------|
+| **Regime 0** | 12,493 (99.6%) | 2.11% | 29M NOK | 0.99 | **Ordinær industri** |
+| **Regime 1** | 1 (0.01%) | 0% | 0 NOK | 52,386* | Datafeil (ekstrem outlier) |
+| **Regime 2** | 45 (0.4%) | 0% | 9.7B NOK | 0.63 | **Megaselskaper** |
 
 **Regime 0 (Mainstream) - Top Predictors:**
 1. egenkapitalandel (0.1165)
