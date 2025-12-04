@@ -1,0 +1,113 @@
+================================================================================
+CROSS-SECTOR VALIDATION & OUTLIER ANALYSIS
+================================================================================
+
+================================================================================
+1. MODEL PERFORMANCE COMPARISON
+================================================================================
+
+sector             name  train_auc  test_auc  train_ap  test_ap
+     C    Manufacturing     0.9857    0.8237    0.6196   0.0508
+     F     Construction     1.0000    0.8659    0.9985   0.1306
+     G Retail/Wholesale     0.9998    0.8593    0.9962   0.1355
+     I      Hospitality     0.9999    0.8294    0.9991   0.1897
+
+================================================================================
+2. DATA QUALITY METRICS
+================================================================================
+
+sector             name  total_obs  complete  complete_pct  bankruptcies  bankruptcy_rate
+     C    Manufacturing      34223     25783          75.3           536             2.08
+     F     Construction     111802     74144          66.3          2774             3.74
+     G Retail/Wholesale     100339     77376          77.1          2906             3.76
+     I      Hospitality      26265     20775          79.1          1340             6.45
+
+================================================================================
+3. OVERFITTING ANALYSIS
+================================================================================
+
+sector             name  train_auc  test_auc  overfitting_gap
+     C    Manufacturing     0.9857    0.8237           0.1620
+     F     Construction     1.0000    0.8659           0.1341
+     G Retail/Wholesale     0.9998    0.8593           0.1405
+     I      Hospitality     0.9999    0.8294           0.1705
+
+Mean overfitting gap: 0.1518
+Max overfitting gap: 0.1705 (Sector I)
+Min overfitting gap: 0.1341 (Sector F)
+
+================================================================================
+4. OUTLIER DETECTION
+================================================================================
+
+WARNING CRITICAL: Perfect/near-perfect train AUC (severe overfitting):
+    Sector F (Construction   ): Train AUC = 1.0000, Gap = 0.1341
+    Sector G (Retail/Wholesale): Train AUC = 0.9998, Gap = 0.1405
+    Sector I (Hospitality    ): Train AUC = 0.9999, Gap = 0.1705
+    -> Issue: Model memorizes training data, may not generalize well
+    -> Recommendation: Add regularization (max_depth, min_samples_leaf)
+
+WARNING: Large train-test gap (>0.15):
+    Sector C (Manufacturing  ): Gap = 0.1620
+    Sector I (Hospitality    ): Gap = 0.1705
+
+WARNING: Low complete case rate (<70%):
+    Sector F (Construction   ): 66.3% complete (37,658 rows dropped)
+
+TOP PREDICTOR ANALYSIS:
+    egenkapitalandel         : 3/4 sectors ['C', 'G', 'I']
+    kortsiktig_gjeldsgrad    : 1/4 sectors ['F']
+    -> Construction (F) diverges: Short-term debt vs equity in other sectors
+    -> Explanation: Project-based cash flow creates unique failure mode
+
+================================================================================
+5. PERFORMANCE RANKING (Test AUC)
+================================================================================
+
+  1. Sector F (Construction     ): 0.8659  (Bankruptcy rate:  3.74%)
+  2. Sector G (Retail/Wholesale ): 0.8593  (Bankruptcy rate:  3.76%)
+  3. Sector I (Hospitality      ): 0.8294  (Bankruptcy rate:  6.45%)
+  4. Sector C (Manufacturing    ): 0.8237  (Bankruptcy rate:  2.08%)
+
+  Performance spread: 0.0422
+  Mean test AUC: 0.8446
+  Std dev: 0.0211
+
+================================================================================
+6. STATISTICAL VALIDATION
+================================================================================
+
+Baseline comparison (AUC > 0.50):
+  Sector C: 0.8237 ( 64.7% better than random)
+  Sector F: 0.8659 ( 73.2% better than random)
+  Sector G: 0.8593 ( 71.9% better than random)
+  Sector I: 0.8294 ( 65.9% better than random)
+
+Correlation: Bankruptcy rate vs Test AUC = -0.054
+  -> Negative correlation: Higher baseline risk does NOT reduce predictability
+
+================================================================================
+7. SUMMARY & RECOMMENDATIONS
+================================================================================
+
+STRENGTHS:
+  - All sectors achieve strong discrimination (AUC > 0.82)
+  - Performance consistent across industries (spread = 0.04)
+  - Higher baseline risk improves predictability (I: 6.45% rate, AUC 0.83)
+  - Sector-specific insights captured (F uses different top predictor)
+
+CONCERNS:
+  - Severe overfitting in 3 sector(s): F, G, I (train AUC ~ 1.0)
+    -> Models memorize training data
+    -> Test performance remains strong BUT could be unstable
+  - Low complete cases in Sector F (66.3%) - potential selection bias
+
+RECOMMENDATIONS:
+  1. Regularize overfitting sectors (F, G, I):
+Traceback (most recent call last):
+  File "C:\Users\magnu\Desktop\AI Management\INF4090\predictions\Supervised_Economic_Analysis\validate_results.py", line 202, in <module>
+    print('     - Reduce max_depth from None \u2192 15')
+  File "C:\Users\magnu\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 34: character maps to <undefined>
