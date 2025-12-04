@@ -1,0 +1,56 @@
+{
+  "sector": "G - Retail/Wholesale",
+  "analysis_date": "2025-12-04 11:37:41.568025",
+  "total_observations": 100339,
+  "complete_cases": 77376,
+  "bankruptcies": 2906,
+  "bankruptcy_rate": 0.03755686517783292,
+  "model_performance": {
+    "train_auc": 0.9998052879111398,
+    "test_auc": 0.859339409612075,
+    "train_ap": 0.9962283294983025,
+    "test_ap": 0.13551111211533734
+  },
+  "top_features": [
+    {
+      "feature": "egenkapitalandel",
+      "importance": 0.09183077611489701
+    },
+    {
+      "feature": "Tall 146",
+      "importance": 0.06757404379459939
+    },
+    {
+      "feature": "total_gjeldsgrad",
+      "importance": 0.064508408272345
+    },
+    {
+      "feature": "debt_liquidity_stress",
+      "importance": 0.0568218940305215
+    },
+    {
+      "feature": "Tall 194",
+      "importance": 0.052003098031967614
+    },
+    {
+      "feature": "rentedekningsgrad",
+      "importance": 0.049119293258490904
+    },
+    {
+      "feature": "efficiency_profitability",
+      "importance": 0.046263046697226216
+    },
+    {
+      "feature": "Tall 1340",
+      "importance": 0.04433214486514193
+    },
+    {
+      "feature": "Tall 72",
+      "importance": 0.044036443670189156
+    },
+    {
+      "feature": "solvency_coverage",
+      "importance": 0.04141513879843381
+    }
+  ]
+}

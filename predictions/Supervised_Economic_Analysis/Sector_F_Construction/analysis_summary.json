@@ -1,0 +1,56 @@
+{
+  "sector": "F - Construction",
+  "analysis_date": "2025-12-04 11:34:54.542799",
+  "total_observations": 111802,
+  "complete_cases": 74144,
+  "bankruptcies": 2774,
+  "bankruptcy_rate": 0.03741368148467846,
+  "model_performance": {
+    "train_auc": 0.9999516546716976,
+    "test_auc": 0.865879916171278,
+    "train_ap": 0.9985481740579099,
+    "test_ap": 0.13056801805842796
+  },
+  "top_features": [
+    {
+      "feature": "kortsiktig_gjeldsgrad",
+      "importance": 0.08546789117977953
+    },
+    {
+      "feature": "debt_liquidity_stress",
+      "importance": 0.08375118608732253
+    },
+    {
+      "feature": "egenkapitalandel",
+      "importance": 0.0760002161275012
+    },
+    {
+      "feature": "likviditetsgrad_1",
+      "importance": 0.06157815681478733
+    },
+    {
+      "feature": "total_gjeldsgrad",
+      "importance": 0.05248572354468228
+    },
+    {
+      "feature": "omsetningsgrad",
+      "importance": 0.050227264901969944
+    },
+    {
+      "feature": "Tall 194",
+      "importance": 0.045801499886928596
+    },
+    {
+      "feature": "Tall 146",
+      "importance": 0.04032416006659415
+    },
+    {
+      "feature": "Tall 217",
+      "importance": 0.03774093750330439
+    },
+    {
+      "feature": "driftsrentabilitet",
+      "importance": 0.03634788222545061
+    }
+  ]
+}

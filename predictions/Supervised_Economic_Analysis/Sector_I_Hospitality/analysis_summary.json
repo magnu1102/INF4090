@@ -1,0 +1,56 @@
+{
+  "sector": "I - Hospitality",
+  "analysis_date": "2025-12-04 11:38:50.759906",
+  "total_observations": 26265,
+  "complete_cases": 20775,
+  "bankruptcies": 1340,
+  "bankruptcy_rate": 0.0645006016847172,
+  "model_performance": {
+    "train_auc": 0.9999210528947099,
+    "test_auc": 0.8293509558550344,
+    "train_ap": 0.9990562475201075,
+    "test_ap": 0.189719338706935
+  },
+  "top_features": [
+    {
+      "feature": "egenkapitalandel",
+      "importance": 0.08209337718470348
+    },
+    {
+      "feature": "total_gjeldsgrad",
+      "importance": 0.06382804026222358
+    },
+    {
+      "feature": "debt_liquidity_stress",
+      "importance": 0.061708924184463394
+    },
+    {
+      "feature": "kortsiktig_gjeldsgrad",
+      "importance": 0.06106401441355397
+    },
+    {
+      "feature": "Tall 194",
+      "importance": 0.04870577023582294
+    },
+    {
+      "feature": "Tall 146",
+      "importance": 0.048682270679357285
+    },
+    {
+      "feature": "efficiency_profitability",
+      "importance": 0.04435186776493409
+    },
+    {
+      "feature": "rentedekningsgrad",
+      "importance": 0.04169517695108358
+    },
+    {
+      "feature": "driftsrentabilitet",
+      "importance": 0.040638201500108204
+    },
+    {
+      "feature": "solvency_coverage",
+      "importance": 0.040407107158305686
+    }
+  ]
+}
