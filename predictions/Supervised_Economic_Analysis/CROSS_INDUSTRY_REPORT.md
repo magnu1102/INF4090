@@ -171,7 +171,7 @@ Developed supervised bankruptcy prediction models for four major Norwegian econo
 - **High concentration:** 1.7%-9.3% of sector, but 4%-17% bankruptcy rates
 
 **Sector-Specific Distress:**
-- **Hospitality:** Largest distressed segment (9.3%), fixed costs + COVID vulnerability
+- **Hospitality:** Largest distressed segment (9.3%), fixed costs
 - **Construction/Retail:** Mid-size distressed segments (3.6%-4.7%), cash flow stress
 - **Manufacturing:** Smallest distressed segment (1.7%), but extreme accounting chaos
 
