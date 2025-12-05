@@ -1,13 +1,5 @@
-# Large data files (over 100MB) - DO NOT commit to git
-data/processed/*.csv
-data/processed/*.parquet
-
-# Feature engineering output files (also large)
-data/features/*.csv
-data/features/*.parquet
-
-# Original Excel data files (also large)
-data/*.xlsx
+# Ignore entire data folder
+data/
 
 # Python cache
 __pycache__/
@@ -42,7 +34,3 @@ desktop.ini
 *.log
 *.bak
 
-# Data quality reports (can regenerate)
-data/processed/*.txt
-
-# Keep only the scripts, not the generated data
